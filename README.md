@@ -2,7 +2,7 @@
 
 <a name="readme-top"></a>
 <div align="center">
-    <img src="/app/assets/images/logo_jcm_md.png" alt="main-logo" width="500"  height="auto" />
+    <img src="/logo_jcm_md.png" alt="main-logo" width="500"  height="auto" />
   <br/>
   <h3><b>Book An Appointment App - Front End - Final Capstone</b></h3>
 </div>
@@ -31,20 +31,20 @@
 
 ## 📖 About project - Book An Appointment App - Front End (React & Redux) - Final Capstone <a name="about-project"></a>
 
-The Book An Appointment App - Front End - Final Capstone project is a project using React.js and Redux, that connects to a back-end API project that provides the data.
+The Book An Appointment App - Front End - Final Capstone project is a project using React.js and Redux, that connects to a back-end API project which provides the data.
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
   <ul>
-    <li><a href="https://ruby-doc.org/">Ruby v 3.2.2</a></li>
-    <li><a href="https://rubyonrails.org/">Rails v 7.1.2</a></li>
+    <li><a href="https://react.dev/">React.js</a></li>
+    <li><a href="https://redux.js.org/">Redux.js</a></li>
   </ul>
 
 ### Key Features <a name="key-features"></a>
-- **Set up a Ruby on Rails project.**
-- **Connect the Rails project to a PostgreSQL database.**
+- **Set up a React & Redux front-end project.**
+- **Connect the React-Redux project to a back-end API endpoint, provided by the Ruby on Rails complementary project.**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -63,25 +63,25 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 
-[Install Ruby](https://www.ruby-lang.org/en/documentation/installation/)
+[Install React.js](https://www.ruby-lang.org/en/documentation/installation/)
 
-[Set Up Rails](https://www.ruby-lang.org/en/documentation/installation/)
+[Install Redux.js](https://www.ruby-lang.org/en/documentation/installation/)
 
-Prerquisites: Ruby, Ruby Development Kit (for Windows), Ruby Gems packaging system, and PostgreSQL database server. Run the following commands...
+Prerquisites: Node.js, npm...
 ```sh
-$ gem install rails
+
 ```
 
 ### Setup
 
 ```sh
   cd my-folder
-  git clone https://github.com/jcmunav63/my-ror-blog.git
+  git clone https://github.com/jcmunav63/book-an-appointment-back-end-mv-final-capstone.git
 ```
 
 ### Install
 
-This project requires the following dependencies: Ruby interpreter, Gem package manager, Ruby on Rails web framework, PostgreSQL database server, and RSpec for unit testing. Additionally, the project requires two linters checkers: RuboCop (Ruby) and Stylelint (CSS styles).
+This project requires the following dependencies: Additionally, the project requires the following linters checkers: Stylelint (CSS styles).
 
 ```sh
 bundle install
@@ -91,28 +91,14 @@ bundle install
 
 To run the project, navigate to the project directory and execute the following command:
 
-Start the Ruby on Rails web server (Puma server) typing the following command...
+Start the Webpack web server (Puma server) typing the following command...
 ```sh
-  rails s , or the complete command,
-  rails server
+  
 ```
 
 ### Run tests
 
-* Install the Rubocop and Stylelint linters.
-
-Install the Rubocop linters checker using the following steps...
-- First add the following code to the Gem file:
-```sh
-gem 'rubocop', '>= 1.0', '< 2.0'
-```
-- Second run the command to install dependicies in your project:
-```sh
-bundle install
-```
-- Remember to copy the .rubocop.yml file to your root directory.
-
-gem 'rubocop', '>= 1.0', '< 2.0'
+* Install the Stylelint linters.
 
 Install Stylelint linters checker using the following command...
 ```sh
@@ -124,11 +110,6 @@ npm install --save-dev stylelint@13.x stylelint-scss@3.x stylelint-config-standa
 
 
 To run LINTERS, run the following command:
-
-Run the following command for Ruby code...
-```sh
-rubocop
-```
 
 Run the following command for CSS code...
 ```sh
