@@ -1,26 +1,26 @@
-import { FETCH_GREETING_REQUEST, FETCH_GREETING_SUCCESS, FETCH_GREETING_FAILURE } from '../actions/greetingActions';
+import { FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_FAILURE } from '../actions/usersActions';
 
 const initialState = {
-  greeting: '',
+  users: '',
   loading: false,
   error: null,
 };
 
-const greetingReducer = (state = initialState, action) => {
+const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_GREETING_REQUEST:
+    case FETCH_USERS_REQUEST:
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case FETCH_GREETING_SUCCESS:
+    case FETCH_USERS_SUCCESS:
       return {
         ...state,
-        greeting: action.payload,
+        users: action.payload,
         loading: false,
       };
-    case FETCH_GREETING_FAILURE:
+    case FETCH_USERS_FAILURE:
       return {
         ...state,
         loading: false,
@@ -31,4 +31,4 @@ const greetingReducer = (state = initialState, action) => {
   }
 };
 
-export default greetingReducer;
+export default usersReducer;

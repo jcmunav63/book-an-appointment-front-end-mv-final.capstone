@@ -1,10 +1,10 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { configureStore } from '@reduxjs/toolkit';
-import greetingReducer from './reducers/GreetingReducer';
+import usersReducer from './reducers/UsersReducer';
 
 const store = configureStore({
   reducer: {
-    greeting: greetingReducer,
+    users: usersReducer,
   },
 });
 
