@@ -54,6 +54,10 @@
 }
 
 @media screen and (min-width: 769px) {
+  .splash-welcome {
+    font-size: 3em;
+  }
+
   .splash-btn-container {
     flex-direction: row;
     justify-content: space-around;
