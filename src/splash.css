@@ -1,5 +1,4 @@
 .splash-screen {
-  color: #333;
   position: absolute;
   top: 0;
   left: 0;
@@ -10,11 +9,49 @@
   background-position: center;
 }
 
-.overlay {
+.splash-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(255, 179, 0, 0.8);
+}
+
+.splash-welcome {
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.splash-btn-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.splash-login-btn,
+.splash-signup-btn {
+  margin-bottom: 10px;
+  background-color: #04aa6d;
+  color: white;
+  padding: 15px 32px;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 769px) {
+  .splash-btn-container {
+    flex-direction: row;
+  }
 }
