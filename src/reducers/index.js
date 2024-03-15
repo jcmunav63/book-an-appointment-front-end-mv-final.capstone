@@ -1,8 +1,9 @@
-import { combineReducers } from 'redux';
-import usersReducer from './UsersReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './rootReducer';
 
-const rootReducer = combineReducers({
-  users: usersReducer,
+// eslint-disable-next-line import/prefer-default-export
+const store = configureStore({
+  reducer: rootReducer,
 });
 
-export default rootReducer;
+export default store;
