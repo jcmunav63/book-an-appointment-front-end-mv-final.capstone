@@ -53,6 +53,7 @@ input[type="password"] {
   background-color: #8ea106;
   transform: scale(1.05);
 }
+
 @media (max-width: 768px) {
   .register-container {
     width: 90%;
