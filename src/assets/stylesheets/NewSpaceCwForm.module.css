@@ -8,7 +8,7 @@
   background-size: cover;
   background-position: right center;
 }
-  
+
 .newCwsOverlay {
   position: absolute;
   top: 0;
@@ -23,7 +23,6 @@
   align-items: center;
   background-color: rgba(146, 181, 41, 0.8);
 }
-
 
 .formContainer {
   width: 40%;

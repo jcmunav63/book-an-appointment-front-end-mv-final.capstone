@@ -5,17 +5,17 @@
     background-color: #333;
     color: #fff;
   }
-  
+
   .sidebar ul {
     list-style: none;
     padding: 0;
   }
-  
+
   .sidebar ul li {
     padding: 10px;
     cursor: pointer;
   }
-  
+
   .sidebar ul li:hover {
     background-color: #555;
   }
