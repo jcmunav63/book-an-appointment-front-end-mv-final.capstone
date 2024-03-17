@@ -2,13 +2,17 @@
   .sidebar {
     width: 20%;
     height: 100vh;
-    background-color: #333;
-    color: #fff;
+    display: flex;
+    background-color: #fff;
+    align-content: center;
+    flex-wrap: wrap;
   }
 
   .sidebar ul {
     list-style: none;
     padding: 0;
+    width: 100%;
+    margin-inline: 20px;
   }
 
   .sidebar ul li {
@@ -17,6 +21,6 @@
   }
 
   .sidebar ul li:hover {
-    background-color: #555;
+    background-color: #97bf0f;
   }
 }
