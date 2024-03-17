@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/LoginComponent';
 import './App.css';
 import Register from './components/RegisterComponent';
-import Splash from './splash';
+// import Splash from './splash';
 import NewSpaceCwForm from './components/NewSpaceCwForm';
 import DeleteSpaceCwForm from './components/DeleteSpaceCwForm';
 
@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <div id="main-div">
-        <Splash />
+        {/* <Splash /> */}
         <Routes>
           <Route exact path="/newSpaceCw" element={<NewSpaceCwForm />} />
           <Route exact path="/deleteSpaceCw" element={<DeleteSpaceCwForm />} />
