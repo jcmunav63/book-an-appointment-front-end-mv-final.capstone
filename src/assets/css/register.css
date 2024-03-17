@@ -1,0 +1,62 @@
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(255, 179, 0, 0.8);
+}
+
+.register-container {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-group {
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.register-button {
+  background-color: #a5b80e;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  outline: none;
+}
+
+.register-button:hover,
+.register-button:focus {
+  background-color: #8ea106;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .register-container {
+    width: 90%;
+    padding: 15px;
+  }
+}

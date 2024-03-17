@@ -2,37 +2,39 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3001/';
 
-const register = (name, email, password, passwordConfirmation, role) => axios.post(`${API_URL}users`, {
-  name,
-  email,
-  password,
-  passwordConfirmation,
-  role,
-});
+const authService = {
+  register: async (name, email, password, passwordConfirmation, role) => {
+    const response = await axios.post(`${API_URL}signup`, {
+      user: {
+        name,
+        email,
+        password,
+        passwordConfirmation,
+        role,
+      },
+    }, {
+      headers: { 'Content-Type': 'application/json' },
+    });
+    return response;
+  },
 
-const login = (email, password) => axios
-  .post(
-    `${API_URL}users/sign_in`,
-    { user: { email, password } }, // Data payload
-    { headers: { 'Content-Type': 'application/json' } },
-  )
-  .then((response) => {
-    if (response.data.jwt) {
-      localStorage.setItem('user', JSON.stringify(response.data));
-    }
-    return response.data;
-  })
-  .catch((error) => {
-    console.error('Login error:', error.response);
-    throw error;
-  });
+  login: async (email, password) => {
+    const response = await axios.post(`${API_URL}login`, {
+      user: {
+        email,
+        password,
+      },
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    console.log('Full response:', response);
+    console.log('This is data', response.data);
+    return response;
+  },
 
-const logout = () => {
-  localStorage.removeItem('user');
+  logout: async () => Promise.resolve(),
 };
 
-export default {
-  register,
-  login,
-  logout,
-};
+export default authService;

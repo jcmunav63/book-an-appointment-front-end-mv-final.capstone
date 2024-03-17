@@ -2,11 +2,18 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import AuthService from '../../services/AuthService';
 
 // Async thunks
-export const register = createAsyncThunk('auth/register', async ({ email, password }, thunkAPI) => {
+export const register = createAsyncThunk('auth/register', async ({
+  name, email, password, passwordConfirmation, role,
+}, thunkAPI) => {
   try {
-    const response = await AuthService.register(email, password);
+    const response = await AuthService.register(name, email, password, passwordConfirmation, role);
+    if (response.data) {
+      // Handling local storage in Redux async thunk
+      localStorage.setItem('user', JSON.stringify(response.data));
+    }
     return response.data;
   } catch (error) {
+    localStorage.removeItem('user');
     return thunkAPI.rejectWithValue(error.response.data);
   }
 });
@@ -14,17 +21,28 @@ export const register = createAsyncThunk('auth/register', async ({ email, passwo
 export const login = createAsyncThunk('auth/login', async ({ email, password }, thunkAPI) => {
   try {
     const response = await AuthService.login(email, password);
-    // Store user's information and JWT in local storage
-    localStorage.setItem('user', JSON.stringify(response.data));
-    return response.data;
+    // Response.data contains the user and jwt token
+    if (response.data) {
+      // Handling local storage in Redux async thunk
+      localStorage.setItem('user', JSON.stringify(response.data));
+    }
+    return response.data; // This will update state based on the response
   } catch (error) {
+    // Error handling, also clears local storage if login fails
+    localStorage.removeItem('user');
     return thunkAPI.rejectWithValue(error.response.data);
   }
 });
 
-export const logout = createAsyncThunk('auth/logout', async () => {
-  await AuthService.logout();
-  localStorage.removeItem('user');
+// eslint-disable-next-line consistent-return
+export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  try {
+    await AuthService.logout();
+    localStorage.removeItem('user'); // Clear user from local storage on logout
+  } catch (error) {
+    console.error('Logout error:', error);
+    return thunkAPI.rejectWithValue(error.response.data);
+  }
 });
 
 // Slice
@@ -60,7 +78,7 @@ export const authSlice = createSlice({
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.message = action.payload.message;
+        state.message = action.payload?.message || 'An unexpected error occurred';
         state.user = null;
       })
       .addCase(login.pending, (state) => {
@@ -74,7 +92,7 @@ export const authSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.message = action.payload.message;
+        state.message = action.payload?.message || 'Failed to log in';
         state.user = null;
       })
       .addCase(logout.fulfilled, (state) => {

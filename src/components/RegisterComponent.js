@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { register, reset } from '../features/auth/authSlice';
+import '../assets/css/register.css';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -34,68 +35,69 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     dispatch(register({
-      name, email, password, role, passwordConfirmation,
+      name, email, password, passwordConfirmation, role,
     }));
   };
 
   return (
-    <>
-      <h2>Register</h2>
-      <form onSubmit={handleRegister}>
-        <div>
-          <label htmlFor="name">Name: </label>
-          <input
-            type="name"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email: </label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="passwordConfirmation">Password Confirmation: </label>
-          <input
-            type="passwordConfirmation"
-            id="passwordConfirmation"
-            value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="role">Role: </label>
-          <input
-            type="role"
-            id="role"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Register</button>
-      </form>
-
-    </>
+    <div className="register-page">
+      <div className="register-container">
+        <h2>Register</h2>
+        <form onSubmit={handleRegister} className="register-form">
+          <div className="register-group">
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="register-group">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="register-group">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className="register-group">
+            <label htmlFor="passwordConfirmation">Confirm Password:</label>
+            <input
+              type="password"
+              id="passwordConfirmation"
+              value={passwordConfirmation}
+              onChange={(e) => setPasswordConfirmation(e.target.value)}
+              required
+            />
+          </div>
+          <div className="register-group">
+            <label htmlFor="role">Role:</label>
+            <input
+              type="text"
+              id="role"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="register-button">Register</button>
+        </form>
+      </div>
+    </div>
   );
 };
 
