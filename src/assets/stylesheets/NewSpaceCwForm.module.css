@@ -3,7 +3,8 @@
   top: 0;
   right: 0;
   height: 100%;
-  width: 80%;
+  width: 100%;
+  padding-top: 100px;
   background-image: url('../back2-pic.jpg');
   background-size: cover;
   background-position: right center;
@@ -25,7 +26,8 @@
 }
 
 .newCwsTitle {
-  margin-bottom: 20px;
+  width: 80%;
+  margin-bottom: 10px;
   color: #fff;
   text-transform: uppercase;
   font-weight: 500;
@@ -37,4 +39,32 @@
   background-color: rgb(230, 230, 230);
   border-radius: 15px;
   padding: 40px;
+}
+
+.formField {
+  width: 95%;
+  margin-bottom: 6px;
+  padding: 5px;
+}
+
+.newSpaceBtn {
+  width: 90%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: greenyellow;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.newSpaceBtn:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+@media screen and (min-width: 769px) {
+  .newCwsContainer {
+    width: 80%;
+  }
 }

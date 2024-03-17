@@ -11,7 +11,6 @@ import Sidebar from './components/SidebarComponent';
 function App() {
   return (
     <Router>
-      <Sidebar />
       <div id="main-div">
         {/* <Splash /> */}
         <Routes>
@@ -23,6 +22,7 @@ function App() {
           <Route component={() => <div>404 Not Found</div>} />
         </Routes>
       </div>
+      <Sidebar />
     </Router>
   );
 }

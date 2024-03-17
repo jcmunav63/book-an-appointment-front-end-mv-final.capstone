@@ -1,3 +1,37 @@
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  margin-inline: 20px;
+}
+
+.sidebar ul li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar ul li:hover {
+  background-color: #97bf0f;
+}
+
+.sidebar {
+  display: none;
+}
+
+.icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-image: url('../menu-icon.svg');
+  background-size: cover;
+  padding: 0;
+}
+
 @media screen and (min-width: 769px) {
   .sidebar {
     width: 20%;
@@ -6,21 +40,5 @@
     background-color: #fff;
     align-content: center;
     flex-wrap: wrap;
-  }
-
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-    width: 100%;
-    margin-inline: 20px;
-  }
-
-  .sidebar ul li {
-    padding: 10px;
-    cursor: pointer;
-  }
-
-  .sidebar ul li:hover {
-    background-color: #97bf0f;
   }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import styles from '../assets/stylesheets/newSpaceCwForm.module.css';
+import styles from '../assets/stylesheets/NewSpaceCwForm.module.css';
 
 const NewSpaceCwForm = () => {
   const [formData, setFormData] = useState({
@@ -47,7 +47,7 @@ const NewSpaceCwForm = () => {
           <input
             type="text"
             name="name"
-            className="text"
+            className={styles.formField}
             placeholder="Name:"
             value={formData.name}
             onChange={handleChange}
@@ -58,7 +58,7 @@ const NewSpaceCwForm = () => {
           <input
             type="text"
             name="model"
-            className="text"
+            className={styles.formField}
             placeholder="Model:"
             value={formData.model}
             onChange={handleChange}
@@ -67,7 +67,7 @@ const NewSpaceCwForm = () => {
           {/* <label htmlFor="description">Description:</label> */}
           <textarea
             name="description"
-            className="textarea"
+            className={styles.formField}
             rows="5"
             placeholder="Description:"
             value={formData.description}
@@ -79,7 +79,7 @@ const NewSpaceCwForm = () => {
           <input
             type="text"
             name="address"
-            className="text"
+            className={styles.formField}
             placeholder="Address:"
             value={formData.address}
             onChange={handleChange}
@@ -89,7 +89,7 @@ const NewSpaceCwForm = () => {
           <input
             type="number"
             name="price"
-            className="number"
+            className={styles.formField}
             placeholder="Price: 10.0"
             value={formData.price}
             onChange={handleChange}
@@ -99,7 +99,7 @@ const NewSpaceCwForm = () => {
           <input
             type="text"
             name="image"
-            className="text"
+            className={styles.formField}
             placeholder="Image URL:"
             value={formData.image}
             onChange={handleChange}
@@ -110,7 +110,7 @@ const NewSpaceCwForm = () => {
           <input
             type="number"
             name="discount"
-            className="number"
+            className={styles.formField}
             placeholder="Discount: 10.0"
             value={formData.discount}
             onChange={handleChange}
@@ -120,7 +120,7 @@ const NewSpaceCwForm = () => {
           <input
             type="text"
             name="category"
-            className="text"
+            className={styles.formField}
             placeholder="Category:"
             value={formData.category}
             onChange={handleChange}
@@ -133,7 +133,7 @@ const NewSpaceCwForm = () => {
           <input
             type="number"
             name="user_id"
-            className="number2"
+            className={styles.formField}
             value={formData.user_id}
             onChange={handleChange}
             required
@@ -142,7 +142,7 @@ const NewSpaceCwForm = () => {
           {/* Success and error messages */}
           {successMessage && <p className="success-message">{successMessage}</p>}
           {errorMessage && <p className="error-message">{errorMessage}</p>}
-          <button type="submit" className="new-space-btn">Create Coworking Space</button>
+          <button type="submit" className={styles.newSpaceBtn}>Create Coworking Space</button>
         </form>
       </div>
     </div>
