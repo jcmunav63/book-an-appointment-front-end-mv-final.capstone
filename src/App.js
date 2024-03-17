@@ -6,10 +6,12 @@ import Register from './components/RegisterComponent';
 // import Splash from './splash';
 import NewSpaceCwForm from './components/NewSpaceCwForm';
 import DeleteSpaceCwForm from './components/DeleteSpaceCwForm';
+import Sidebar from './components/SidebarComponent';
 
 function App() {
   return (
     <Router>
+      <Sidebar />
       <div id="main-div">
         {/* <Splash /> */}
         <Routes>

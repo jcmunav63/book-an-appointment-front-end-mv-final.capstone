@@ -29,21 +29,13 @@ h2 {
 }
 
 #main-div {
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 50px;
   font-size: 1.3rem;
+  display: flex;
+  flex-direction: row;
 }
 
 .separator {
   margin-left: 10px;
-}
-
-.form-container {
-  width: 100%;
-  background-color: rgb(230, 230, 230);
-  border-radius: 15px;
-  padding: 40px;
 }
 
 .text {

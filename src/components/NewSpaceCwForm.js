@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import styles from '../assets/stylesheets/NewSpaceCwForm.module.css';
+import styles from '../assets/stylesheets/newSpaceCwForm.module.css';
 
 const NewSpaceCwForm = () => {
   const [formData, setFormData] = useState({
@@ -41,8 +41,8 @@ const NewSpaceCwForm = () => {
   return (
     <div className={styles.newCwsContainer}>
       <div className={styles.newCwsOverlay}>
-        <h2>Create a New Coworking Space</h2>
-        <form onSubmit={handleSubmit} className="form-container">
+        <h2 className={styles.newCwsTitle}>Create a New Coworking Space</h2>
+        <form onSubmit={handleSubmit} className={styles.formContainer}>
           {/* <label htmlFor="name">Name:</label> */}
           <input
             type="text"

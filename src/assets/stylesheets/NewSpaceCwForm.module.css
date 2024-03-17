@@ -1,9 +1,9 @@
 .newCwsContainer {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
   height: 100%;
+  width: 80%;
   background-image: url('../back2-pic.jpg');
   background-size: cover;
   background-position: right center;
@@ -21,5 +21,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 179, 0, 0.8);
+  background-color: rgba(146, 181, 41, 0.8);
+}
+
+
+.formContainer {
+  width: 40%;
+  background-color: rgb(230, 230, 230);
+  border-radius: 15px;
+  padding: 40px;
 }

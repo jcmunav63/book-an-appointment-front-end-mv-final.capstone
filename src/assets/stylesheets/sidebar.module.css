@@ -1,0 +1,22 @@
+@media screen and (min-width: 769px) {
+  .sidebar {
+    width: 20%;
+    height: 100vh;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .sidebar ul li:hover {
+    background-color: #555;
+  }
+}
