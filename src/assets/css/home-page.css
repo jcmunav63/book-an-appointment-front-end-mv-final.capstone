@@ -1,26 +1,29 @@
 .home-page-container {
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+  overflow-y: auto;
 }
 
 .slider-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
-  max-width: 940px;
   width: 100%;
+  max-width: 100%;
 }
 
 .spaces-slider {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   gap: 20px;
   overflow: hidden;
@@ -29,7 +32,8 @@
 }
 
 .space-item {
-  width: 300px;
+  width: 90%;
+  max-width: 300px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -38,39 +42,53 @@
 }
 
 .arrow {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-  z-index: 1000;
-  background-color: #ff0b0b;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: none;
 }
 
-.left-arrow {
-  left: calc(-50% + 20px);
-}
-
-.right-arrow {
-  right: calc(-50% + 20px);
-}
-
-@media (max-width: 768px) {
-  .spaces-slider {
-    flex-direction: column;
+@media (min-width: 769px) {
+  .home-page-container {
+    flex-direction: row;
+    height: 100vh;
   }
 
-  .left-arrow,
+  .slider-container {
+    flex-direction: row;
+    max-width: 350px;
+  }
+
+  .spaces-slider {
+    flex-direction: row;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .space-item {
+    width: 300px;
+  }
+
+  .arrow {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    z-index: 1000;
+    background-color: #a5b80e;
+    border-radius: 20%;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .left-arrow {
+    left: calc(-50% + 20px);
+  }
+
   .right-arrow {
-    left: 10px;
-    right: 10px;
+    right: calc(-50% + 20px);
   }
 }
