@@ -15,7 +15,6 @@ const Home = () => {
 
   const [visibleStartIndex, setVisibleStartIndex] = useState(0);
 
-  // Add functions to handle arrow clicks
   const scrollLeft = () => {
     setVisibleStartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
@@ -25,7 +24,6 @@ const Home = () => {
   };
 
   const handleKeyPress = (event, action) => {
-    // 13 is the Enter key, 32 is the Space key
     if (event.keyCode === 13 || event.keyCode === 32) {
       action();
     }
@@ -41,12 +39,12 @@ const Home = () => {
       <div className="content-center">
         {loading && <p>Loading...</p>}
         {error && (
-          <p>
-            Error:
-            {error}
-          </p>
+        <p>
+          Error:
+          {error}
+        </p>
         )}
-        <h1>Latest Coworking Spaces</h1>
+        <h1>Latest Models</h1>
         <p>Please select a coworking space</p>
         <div className="slider-container">
           <div
@@ -55,47 +53,30 @@ const Home = () => {
             onKeyDown={(event) => handleKeyPress(event, scrollLeft)}
             role="button"
             tabIndex={0}
+            aria-disabled={visibleStartIndex === 0}
           >
-            {' '}
-            &lt;
+            <img src="../../assets/arrows/left.svg" alt="Left" />
           </div>
-          <div className="slider-container">
-            <div
-              className="arrow left-arrow"
-              onClick={scrollLeft}
-              onKeyDown={(event) => handleKeyPress(event, scrollLeft)}
-              role="button"
-              tabIndex={0}
-              aria-disabled={visibleStartIndex === 0}
-            >
-              &lt;
-            </div>
-            <div className="spaces-slider">
-              {visibleSpaces
-                && visibleSpaces.map((coworkingSpace) => (
-                  <div className="space-item" key={coworkingSpace.id}>
-                    <img
-                      className="space-image"
-                      alt="Coworking space"
-                      src={coworkingSpace.image}
-                    />
-                    <div className="space-info">
-                      <strong>{coworkingSpace.name}</strong>
-                      <p>{coworkingSpace.description}</p>
-                    </div>
-                  </div>
-                ))}
-            </div>
-            <div
-              className="arrow right-arrow"
-              onClick={scrollRight}
-              onKeyDown={(event) => handleKeyPress(event, scrollRight)}
-              role="button"
-              tabIndex={0}
-              aria-disabled={visibleStartIndex >= coworkingSpaces.length - 3}
-            >
-              &gt;
-            </div>
+          <div className="spaces-slider">
+            {visibleSpaces && visibleSpaces.map((space) => (
+              <div className="space-item" key={space.id}>
+                <img className="space-image" alt={space.name} src={space.image} />
+                <div className="space-info">
+                  <strong>{space.name}</strong>
+                  <p>{space.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div
+            className="arrow right-arrow"
+            onClick={scrollRight}
+            onKeyDown={(event) => handleKeyPress(event, scrollRight)}
+            role="button"
+            tabIndex={0}
+            aria-disabled={visibleStartIndex >= coworkingSpaces.length - 3}
+          >
+            <img src="../../assets/arrows/right.svg" alt="Right" />
           </div>
         </div>
       </div>
