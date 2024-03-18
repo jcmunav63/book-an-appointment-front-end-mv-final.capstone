@@ -37,7 +37,6 @@
 }
 
 .active {
-  display: block;
   width: 80%;
   height: 100vh;
   position: absolute;
