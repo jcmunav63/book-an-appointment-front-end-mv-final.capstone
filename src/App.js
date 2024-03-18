@@ -1,23 +1,38 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import {
+  BrowserRouter as Router, Route, Routes, Navigate,
+} from 'react-router-dom';
+import Users from './components/Users';
 import Login from './components/LoginComponent';
 import './App.css';
 import Register from './components/RegisterComponent';
-// import Splash from './splash';
+import Splash from './splash';
 import NewSpaceCwForm from './components/NewSpaceCwForm';
 import DeleteSpaceCwForm from './components/DeleteSpaceCwForm';
 import Sidebar from './components/SidebarComponent';
+
+const PrivateRoute = ({ children }) => {
+  const userString = localStorage.getItem('user');
+  const user = userString ? JSON.parse(userString) : null;
+  return user ? children : <Navigate to="/" />;
+};
+
+PrivateRoute.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 function App() {
   return (
     <Router>
       <div id="main-div">
-        {/* <Splash /> */}
         <Routes>
+          <Route exact path="/" element={<Splash />} />
           <Route exact path="/newSpaceCw" element={<NewSpaceCwForm />} />
           <Route exact path="/deleteSpaceCw" element={<DeleteSpaceCwForm />} />
-          <Route exact path="/" element={<Login />} />
+          <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
+          <Route exact path="/users" element={<PrivateRoute><Users /></PrivateRoute>} />
           {/* More routes here if needed */}
           <Route component={() => <div>404 Not Found</div>} />
         </Routes>
