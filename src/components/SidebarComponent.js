@@ -2,14 +2,15 @@ import React from 'react';
 import styles from '../assets/stylesheets/sidebar.module.css';
 
 function Sidebar() {
+  const [isActive, setIsActive] = React.useState(false);
+
   const clickHandle = () => {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.toggle('active');
+    setIsActive(!isActive);
   };
 
   return (
     <>
-      <div className={styles.sidebar}>
+      <div className={`${styles.sidebar} ${isActive ? styles.active : ''}`}>
         <ul>
           <li>Home</li>
           <li>About</li>
@@ -17,9 +18,7 @@ function Sidebar() {
           <li>Contact</li>
         </ul>
       </div>
-      <button type="button" className={styles.icon} onClick={clickHandle} aria-label="Toggle Sidebar">
-        <i className={styles.menuIcon} />
-      </button>
+      <button type="button" className={`${styles.icon} ${isActive ? styles.closeIcon : ''}`} onClick={clickHandle} aria-label="Toggle Sidebar" />
     </>
   );
 }
