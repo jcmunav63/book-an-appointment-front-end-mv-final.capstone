@@ -1,4 +1,5 @@
 .home-page-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,19 +48,29 @@
   align-items: center;
   justify-content: center;
   user-select: none;
-  z-index: 2;
+  z-index: 1000;
+  background-color: #ff0b0b;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .left-arrow {
-  left: -40px;
+  left: calc(-50% + 20px);
 }
 
 .right-arrow {
-  right: -40px;
+  right: calc(-50% + 20px);
 }
 
 @media (max-width: 768px) {
   .spaces-slider {
     flex-direction: column;
+  }
+
+  .left-arrow,
+  .right-arrow {
+    left: 10px;
+    right: 10px;
   }
 }
