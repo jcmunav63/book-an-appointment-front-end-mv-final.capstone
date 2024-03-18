@@ -32,6 +32,23 @@
   padding: 0;
 }
 
+.closeIcon {
+  background-image: url('../close-icon.svg');
+}
+
+.active {
+  display: block;
+  width: 80%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
 @media screen and (min-width: 769px) {
   .sidebar {
     width: 20%;
