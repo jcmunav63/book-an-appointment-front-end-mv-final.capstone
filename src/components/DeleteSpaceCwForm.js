@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import styles from '../assets/stylesheets/DeleteSpaceCwForm.module.css';
 
 const DeleteSpaceCwForm = () => {
   const [formData, setFormData] = useState({
@@ -32,37 +33,39 @@ const DeleteSpaceCwForm = () => {
   };
 
   return (
-    <div>
-      <h2>Delete a Coworking Space</h2>
-      <form onSubmit={handleSubmit} className="form-container">
-        <input
-          type="number"
-          name="space_cw_id"
-          className="number2"
-          placeholder="Space_cw_id:"
-          value={formData.space_cw_id}
-          onChange={handleChange}
-          required
-        />
+    <div className={styles.deleteCwsContainer}>
+      <div className={styles.deleteCwsOverlay}>
+        <h2 className={styles.deleteCwsTitle}>Delete a Coworking Space</h2>
+        <form onSubmit={handleSubmit} className={styles.formContainer}>
+          <input
+            type="number"
+            name="space_cw_id"
+            className={styles.formField}
+            placeholder="Space_cw_id:"
+            value={formData.space_cw_id}
+            onChange={handleChange}
+            required
+          />
 
-        {/* type="hidden"; value={loggedInUserId} */}
-        {/* <label htmlFor="user_id">User Id:</label> */}
-        <input
-          type="number"
-          name="user_id"
-          className="number2"
-          placeholder="User_id:"
-          value={formData.user_id}
-          onChange={handleChange}
-          required
-        />
+          {/* type="hidden"; value={loggedInUserId} */}
+          {/* <label htmlFor="user_id">User Id:</label> */}
+          <input
+            type="number"
+            name="user_id"
+            className={styles.formField}
+            placeholder="User_id:"
+            value={formData.user_id}
+            onChange={handleChange}
+            required
+          />
 
-        {/* Success and error messages */}
-        {successMessage && <p className="success-message">{successMessage}</p>}
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
+          {/* Success and error messages */}
+          {successMessage && <p className="success-message">{successMessage}</p>}
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-        <button type="submit" className="new-space-btn">Delete Coworking Space</button>
-      </form>
+          <button type="submit" className={styles.deleteSpaceBtn}>Delete Coworking Space</button>
+        </form>
+      </div>
     </div>
   );
 };
