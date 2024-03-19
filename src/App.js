@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './components/LoginComponent';
 import './App.css';
 import Register from './components/RegisterComponent';
+import NewReservationForm from './components/NewReservationForm';
 import Splash from './splash';
 import NewSpaceCwForm from './components/NewSpaceCwForm';
 import DeleteSpaceCwForm from './components/DeleteSpaceCwForm';
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/deleteSpaceCw" element={<DeleteSpaceCwForm />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
+          <Route exact path="/NewReservation" element={<NewReservationForm />} />
           <Route exact path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
           {/* More routes here if needed */}
           <Route component={() => <div>404 Not Found</div>} />
