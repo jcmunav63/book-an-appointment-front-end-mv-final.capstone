@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import {
   BrowserRouter as Router, Route, Routes, Navigate,
 } from 'react-router-dom';
-import Users from './components/Users';
+import Home from './pages/Home';
 import Login from './components/LoginComponent';
 import './App.css';
 import Register from './components/RegisterComponent';
 import NewReservationForm from './components/NewReservationForm';
 import Splash from './splash';
+import NewSpaceCwForm from './components/NewSpaceCwForm';
+import DeleteSpaceCwForm from './components/DeleteSpaceCwForm';
+import Sidebar from './components/SidebarComponent';
 
 const PrivateRoute = ({ children }) => {
   const userString = localStorage.getItem('user');
@@ -23,17 +26,20 @@ PrivateRoute.propTypes = {
 function App() {
   return (
     <Router>
-      <div>
+      <div id="main-div">
         <Routes>
           <Route exact path="/" element={<Splash />} />
+          <Route exact path="/newSpaceCw" element={<NewSpaceCwForm />} />
+          <Route exact path="/deleteSpaceCw" element={<DeleteSpaceCwForm />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
-          <Route exact path="/users" element={<PrivateRoute><Users /></PrivateRoute>} />
           <Route exact path="/NewReservation" element={<NewReservationForm />} />
+          <Route exact path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
           {/* More routes here if needed */}
           <Route component={() => <div>404 Not Found</div>} />
         </Routes>
       </div>
+      <Sidebar />
     </Router>
   );
 }
