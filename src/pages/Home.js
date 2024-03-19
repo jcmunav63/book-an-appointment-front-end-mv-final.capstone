@@ -44,8 +44,26 @@ const Home = () => {
           {error}
         </p>
         )}
-        <h1>Latest Models</h1>
-        <p>Please select a coworking space</p>
+        <h1>Latest coworking spaces</h1>
+        <p className="select-space-paragraph">Please select a coworking space</p>
+        <div className="decorative-dots">
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+          <div className="decorative-dot" />
+        </div>
         <div className="slider-container">
           <div
             className={`arrow left-arrow ${visibleStartIndex === 0 ? 'disabled' : ''}`}
@@ -66,6 +84,20 @@ const Home = () => {
                 <img className="space-image" alt={space.name} src={space.image} />
                 <div className="space-info">
                   <strong>{space.name}</strong>
+                  <div className="decorative-dots">
+                    <div className="decorative-dot" />
+                    <div className="decorative-dot" />
+                    <div className="decorative-dot" />
+                    <div className="decorative-dot" />
+                    <div className="decorative-dot" />
+                    <div className="decorative-dot" />
+                    <div className="decorative-dot" />
+                    <div className="decorative-dot" />
+                    <div className="decorative-dot" />
+                    <div className="decorative-dot" />
+                    <div className="decorative-dot" />
+                    <div className="decorative-dot" />
+                  </div>
                   <p>{space.description}</p>
                 </div>
               </div>
