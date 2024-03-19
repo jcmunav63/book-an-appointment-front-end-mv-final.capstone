@@ -27,3 +27,12 @@ export const createReservation = (reservationData) => async (dispatch) => {
     dispatch(createReservationFailure(error.message));
   }
 };
+
+export const fetchUserReservations = (userId) => async (dispatch) => {
+  try {
+    const response = await axios.get(`http://localhost:3001/api/v1/users/${userId}/reservations`);
+    dispatch({ type: 'FETCH_USER_RESERVATIONS_SUCCESS', payload: response.data });
+  } catch (error) {
+    dispatch({ type: 'FETCH_USER_RESERVATIONS_FAILURE', payload: error.message });
+  }
+};
