@@ -110,9 +110,27 @@ h1 {
     height: 100vh;
   }
 
+  h1 {
+    font-size: 33px;
+  }
+
+  .select-space-paragraph {
+    font-size: 14px;
+  }
+
+  .space-info strong {
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  .space-info p {
+    font-size: 12px;
+    color: #444;
+  }
+
   .slider-container {
     flex-direction: row;
-    max-width: 550px;
+    max-width: 450px;
   }
 
   .spaces-slider {
@@ -146,7 +164,11 @@ h1 {
     justify-content: center;
     z-index: 1000;
     padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .arrow img {
+    width: 60px;
+    height: 60px;
   }
 
   .arrow.disabled {
@@ -155,23 +177,32 @@ h1 {
   }
 
   .left-arrow {
-    left: calc(20px + 20%);
+    left: calc(5px + 20%);
   }
 
   .right-arrow {
-    right: 20px;
+    right: 5px;
   }
 }
 
 @media (min-width: 992px) {
   .slider-container {
     flex-direction: row;
-    max-width: 700px;
+    max-width: 620px;
   }
 
   .space-item {
     max-width: 500px;
     height: 300px;
+  }
+
+  .arrow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .arrow img {
+    width: 88px;
+    height: 88px;
   }
 }
 
@@ -184,6 +215,23 @@ h1 {
   .space-item {
     max-width: 600px;
     height: 350px;
+  }
+
+  h1 {
+    font-size: 38px;
+  }
+
+  .select-space-paragraph {
+    font-size: 16px;
+  }
+
+  .space-info strong {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .space-info p {
+    font-size: 15px;
   }
 }
 
