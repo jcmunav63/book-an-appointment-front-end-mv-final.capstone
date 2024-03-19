@@ -48,7 +48,7 @@ const Home = () => {
         <p>Please select a coworking space</p>
         <div className="slider-container">
           <div
-            className="arrow left-arrow"
+            className={`arrow left-arrow ${visibleStartIndex === 0 ? 'disabled' : ''}`}
             onClick={scrollLeft}
             onKeyDown={(event) => handleKeyPress(event, scrollLeft)}
             role="button"
@@ -69,7 +69,7 @@ const Home = () => {
             ))}
           </div>
           <div
-            className="arrow right-arrow"
+            className={`arrow right-arrow ${visibleStartIndex >= coworkingSpaces.length - 3 ? 'disabled' : ''}`}
             onClick={scrollRight}
             onKeyDown={(event) => handleKeyPress(event, scrollRight)}
             role="button"
