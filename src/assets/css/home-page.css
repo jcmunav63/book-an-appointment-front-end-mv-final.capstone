@@ -9,13 +9,13 @@
   padding: 20px;
   text-align: center;
   overflow-y: auto;
-  font-family: 'Arial', sans-serif; 
+  font-family: 'Arial', sans-serif;
 }
 
 h1 {
   font-size: 38px;
   font-weight: bold;
-  color: #000000;
+  color: #000;
 }
 
 .select-space-paragraph {
@@ -24,7 +24,6 @@ h1 {
   color: #787878;
   margin-bottom: 30px;
 }
-
 
 .space-info strong {
   font-size: 16px;
@@ -148,12 +147,12 @@ h1 {
     z-index: 1000;
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
+  }
 
-.arrow.disabled {
+  .arrow.disabled {
     cursor: default;
     pointer-events: none;
-}
+  }
 
   .left-arrow {
     left: 20px;
