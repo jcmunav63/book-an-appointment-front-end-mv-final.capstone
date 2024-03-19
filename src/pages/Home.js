@@ -55,7 +55,10 @@ const Home = () => {
             tabIndex={0}
             aria-disabled={visibleStartIndex === 0}
           >
-            <img src="../../assets/arrows/left.svg" alt="Left" />
+            <img
+              src={visibleStartIndex === 0 ? '../../assets/arrows/leftDisabled.svg' : '../../assets/arrows/left.svg'}
+              alt="Left"
+            />
           </div>
           <div className="spaces-slider">
             {visibleSpaces && visibleSpaces.map((space) => (
@@ -76,7 +79,10 @@ const Home = () => {
             tabIndex={0}
             aria-disabled={visibleStartIndex >= coworkingSpaces.length - 3}
           >
-            <img src="../../assets/arrows/right.svg" alt="Right" />
+            <img
+              src={visibleStartIndex >= coworkingSpaces.length - 3 ? '../../assets/arrows/rightDisabled.svg' : '../../assets/arrows/right.svg'}
+              alt="Right"
+            />
           </div>
         </div>
       </div>
