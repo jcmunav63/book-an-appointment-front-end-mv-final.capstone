@@ -96,7 +96,7 @@
 
   .arrow {
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -105,24 +105,21 @@
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    background-color: #a5b80e;
-    border-radius: 50%;
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .arrow.disabled {
     cursor: default;
-    background-color: #cccccc;
     pointer-events: none;
 }
 
   .left-arrow {
-    left: calc(-20% + 20px);
+    left: 20px;
   }
 
   .right-arrow {
-    right: calc(-20% + 20px);
+    right: 20px;
   }
 }
 
@@ -136,14 +133,6 @@
     max-width: 500px;
     height: 300px;
   }
-
-  .left-arrow {
-    left: calc(-21% + 20px);
-  }
-
-  .right-arrow {
-    right: calc(-21% + 20px);
-  }
 }
 
 @media (min-width: 1400px) {
@@ -155,14 +144,6 @@
   .space-item {
     max-width: 600px;
     height: 350px;
-  }
-
-  .left-arrow {
-    left: calc(-30% + 20px);
-  }
-
-  .right-arrow {
-    right: calc(-30% + 20px);
   }
 }
 
