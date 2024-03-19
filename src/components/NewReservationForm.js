@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import '../assets/css/newreservation.css';
+import styles from '../assets/stylesheets/NewReservationForm.module.css';
 
 const NewReservationForm = () => {
   const [formData, setFormData] = useState({
@@ -86,142 +87,144 @@ const NewReservationForm = () => {
   };
 
   return (
-    <div id="main-div">
-      <h2>Create a New Reservation</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="number"
-          name="user_id"
-          className="number"
-          value={formData.user_id}
-          onChange={handleChange}
-          placeholder="User Id:"
-          readOnly
-        />
-        <br />
+    <div className={styles.mainDiv}>
+      <div className={styles.mainDivOverlay}>
+        <h2 className={styles.newReservationTitle}>Create a New Reservation</h2>
+        <form className={styles.formContainer} onSubmit={handleSubmit}>
+          <input
+            type="number"
+            name="user_id"
+            className={styles.formField}
+            value={formData.user_id}
+            onChange={handleChange}
+            placeholder="User Id:"
+            readOnly
+          />
+          <br />
 
-        <select
-          name="space_cw_id"
-          className="dropdown_list"
-          value={formData.space_cw_id}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select a Space_cw</option>
-          {spaceCws.map((spaceCw) => (
-            <option key={spaceCw.id} value={spaceCw.id}>
-              {spaceCw.name}
-            </option>
-          ))}
-        </select>
-        <br />
+          <select
+            name="space_cw_id"
+            className={styles.formField}
+            value={formData.space_cw_id}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select a Space_cw</option>
+            {spaceCws.map((spaceCw) => (
+              <option key={spaceCw.id} value={spaceCw.id}>
+                {spaceCw.name}
+              </option>
+            ))}
+          </select>
+          <br />
 
-        <input
-          type="date"
-          name="date_reserved"
-          className="date"
-          value={formData.date_reserved}
-          onChange={handleChange}
-          placeholder="Date Reserved:"
-          required
-        />
-        <br />
+          <input
+            type="date"
+            name="date_reserved"
+            className={styles.formField}
+            value={formData.date_reserved}
+            onChange={handleChange}
+            placeholder="Date Reserved:"
+            required
+          />
+          <br />
 
-        <input
-          type="date"
-          name="date_cancelled"
-          className="date"
-          value={formData.date_cancelled}
-          onChange={handleChange}
-          placeholder="Date Cancelled:"
-        />
-        <br />
+          <input
+            type="date"
+            name="date_cancelled"
+            className={styles.formField}
+            value={formData.date_cancelled}
+            onChange={handleChange}
+            placeholder="Date Cancelled:"
+          />
+          <br />
 
-        <input
-          type="date"
-          name="start_date"
-          className="date"
-          value={formData.start_date}
-          onChange={handleChange}
-          placeholder="Start Date:"
-          required
-        />
-        <br />
+          <input
+            type="date"
+            name="start_date"
+            className={styles.formField}
+            value={formData.start_date}
+            onChange={handleChange}
+            placeholder="Start Date:"
+            required
+          />
+          <br />
 
-        <input
-          type="date"
-          name="end_date"
-          className="date"
-          value={formData.end_date}
-          onChange={handleChange}
-          placeholder="Start Date:"
-          required
-        />
-        <br />
+          <input
+            type="date"
+            name="end_date"
+            className={styles.formField}
+            value={formData.end_date}
+            onChange={handleChange}
+            placeholder="Start Date:"
+            required
+          />
+          <br />
 
-        <input
-          type="time"
-          name="start_time"
-          className="time"
-          value={formData.start_time}
-          onChange={handleChange}
-          placeholder="Start TIme:"
-          required
-        />
-        <br />
+          <input
+            type="time"
+            name="start_time"
+            className={styles.formField}
+            value={formData.start_time}
+            onChange={handleChange}
+            placeholder="Start TIme:"
+            required
+          />
+          <br />
 
-        <input
-          type="time"
-          name="end_time"
-          className="time"
-          value={formData.end_time}
-          onChange={handleChange}
-          placeholder="End TIme:"
-          required
-        />
-        <br />
+          <input
+            type="time"
+            name="end_time"
+            className={styles.formField}
+            value={formData.end_time}
+            onChange={handleChange}
+            placeholder="End TIme:"
+            required
+          />
+          <br />
 
-        <input
-          name="city_id"
-          type="number"
-          value={formData.city_id}
-          className="number"
-          onChange={handleChange}
-          required
-        />
-        <br />
+          <input
+            name="city_id"
+            type="number"
+            value={formData.city_id}
+            className={styles.formField}
+            onChange={handleChange}
+            required
+          />
+          <br />
 
-        {/* <option value="">Select a City</option>
-          {cities.map((city) => (
-            <option
-              key={city.id}
-              value={city.id}
-            >
-              {city.name}
-            </option>
-          ))} */}
+          {/* <option value="">Select a City</option>
+            {cities.map((city) => (
+              <option
+                key={city.id}
+                value={city.id}
+              >
+                {city.name}
+              </option>
+            ))} */}
 
-        <input
-          type="textarea"
-          name="comments"
-          className="text-area"
-          value={formData.comments}
-          onChange={handleChange}
-          placeholder="Comments:"
-          rows="3"
-          required
-        />
-        <br />
+          <input
+            type="textarea"
+            name="comments"
+            className={styles.formField}
+            value={formData.comments}
+            onChange={handleChange}
+            placeholder="Comments:"
+            rows="3"
+            required
+          />
+          <br />
 
-        <button
-          type="submit"
-          className="new-reserve-btn"
-        >
-          Create Reservation
-        </button>
-      </form>
-      {successMessage && <p className="success-message">{successMessage}</p>}
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <button
+            type="submit"
+            className={styles.newReservationBtn}
+          >
+            Create Reservation
+          </button>
+        </form>
+        {successMessage && <p className="success-message">{successMessage}</p>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+      </div>
     </div>
   );
 };
