@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   BrowserRouter as Router, Route, Routes, Navigate,
 } from 'react-router-dom';
-import Users from './components/Users';
+import Home from './pages/Home';
 import Login from './components/LoginComponent';
 import './App.css';
 import Register from './components/RegisterComponent';
@@ -32,7 +32,7 @@ function App() {
           <Route exact path="/deleteSpaceCw" element={<DeleteSpaceCwForm />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
-          <Route exact path="/users" element={<PrivateRoute><Users /></PrivateRoute>} />
+          <Route exact path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
           {/* More routes here if needed */}
           <Route component={() => <div>404 Not Found</div>} />
         </Routes>

@@ -1,9 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import usersReducer from './UsersReducer';
+import homeReducer from './HomeReducer';
 import authReducer from '../features/auth/authSlice';
 
 const rootReducer = combineReducers({
-  users: usersReducer,
+  coworkingSpaces: homeReducer,
   auth: authReducer,
 });
 

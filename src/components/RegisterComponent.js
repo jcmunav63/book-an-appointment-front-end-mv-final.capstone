@@ -25,7 +25,7 @@ const Register = () => {
     }
 
     if (isSuccess || user) {
-      navigate('/users');
+      navigate('/home');
       console.log('Register successful');
     }
 
