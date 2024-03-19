@@ -9,9 +9,15 @@ const Home = () => {
     (state) => state.coworkingSpaces,
   );
 
+  // Retrieve the user ID from local storage
+  const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
+
   useEffect(() => {
-    dispatch(fetchCoworkingSpaces());
-  }, [dispatch]);
+    // Ensure userId is not null or undefined before dispatching
+    if (userId) {
+      dispatch(fetchCoworkingSpaces(userId));
+    }
+  }, [dispatch, userId]);
 
   const [visibleStartIndex, setVisibleStartIndex] = useState(0);
 
