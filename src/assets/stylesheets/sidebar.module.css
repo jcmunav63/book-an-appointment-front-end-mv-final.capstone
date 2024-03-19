@@ -48,14 +48,23 @@
   align-content: center;
 }
 
+.main-content-area {
+  position: relative;
+  flex-grow: 1;
+  width: 80%;
+  overflow-x: hidden;
+}
+
 @media screen and (min-width: 769px) {
   .sidebar {
     width: 20%;
     height: 100vh;
     display: flex;
+    justify-content: space-between;
     background-color: #fff;
     align-content: center;
     flex-wrap: wrap;
+    height: 100vh; 
   }
 
   .icon {
