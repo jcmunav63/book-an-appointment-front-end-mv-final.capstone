@@ -9,6 +9,32 @@
   padding: 20px;
   text-align: center;
   overflow-y: auto;
+  font-family: 'Arial', sans-serif; 
+}
+
+h1 {
+  font-size: 38px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.select-space-paragraph {
+  font-size: 16px;
+  font-weight: bold;
+  color: #787878;
+  margin-bottom: 30px;
+}
+
+
+.space-info strong {
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.space-info p {
+  font-size: 14px;
+  color: #444;
 }
 
 .slider-container {
@@ -19,6 +45,7 @@
   position: relative;
   width: 100%;
   max-width: 100%;
+  margin-top: 30px;
 }
 
 .spaces-slider {
@@ -50,6 +77,20 @@
 
 .arrow {
   display: none;
+}
+
+.decorative-dots {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.decorative-dot {
+  height: 2px;
+  width: 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  margin: 0 5px;
 }
 
 @media (min-width: 481px) {
@@ -157,7 +198,4 @@
     max-width: 600px;
     height: 400px;
   }
-}
-
-@media only screen and (orientation: landscape) and (min-width: 0) {
 }
