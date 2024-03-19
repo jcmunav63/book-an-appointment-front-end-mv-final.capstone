@@ -155,7 +155,7 @@ h1 {
   }
 
   .left-arrow {
-    left: 20px;
+    left: calc(20px + 20%);
   }
 
   .right-arrow {
