@@ -36,3 +36,12 @@ export const fetchUserReservations = (userId) => async (dispatch) => {
     dispatch({ type: 'FETCH_USER_RESERVATIONS_FAILURE', payload: error.message });
   }
 };
+
+export const deleteReservation = (userId, reservationId) => async (dispatch) => {
+  try {
+    await axios.delete(`http://localhost:3001/api/v1/users/${userId}/reservations/${reservationId}`);
+    dispatch({ type: 'DELETE_RESERVATION_SUCCESS', payload: reservationId });
+  } catch (error) {
+    dispatch({ type: 'DELETE_RESERVATION_FAILURE', payload: error.message });
+  }
+};
