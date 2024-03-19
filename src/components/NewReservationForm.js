@@ -1,11 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { createReservation } from '../actions/reservationActions';
 import '../assets/css/newreservation.css';
 
 const NewReservationForm = () => {
-  // const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     user_id: '',
     space_cw_id: '',
@@ -20,10 +17,15 @@ const NewReservationForm = () => {
   });
 
   const [spaceCws, setSpaceCws] = useState([]);
-  const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
-  const [cities, setCities] = useState([]);
+
+  // const [cities, setCities] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
+    setFormData((prevFormData) => ({ ...prevFormData, user_id: userId }));
+  }, []);
 
   useEffect(() => {
     const fetchSpaceCws = async () => {
@@ -39,21 +41,23 @@ const NewReservationForm = () => {
         console.error('Error fetching Space_cws:', error);
       }
     };
-
-    const fetchCities = async () => {
-      try {
-        const response = await axios.get('http://localhost:3001/api/v1/cities');
-        setCities(response.data);
-      } catch (error) {
-        console.error('Error fetching cities:', error);
-      }
-    };
-
     fetchSpaceCws();
-    fetchCities();
   }, [formData.user_id]);
 
+  // useEffect(() => {
+  //   const fetchCities = async () => {
+  //     try {
+  //       const response = await axios.get('http://localhost:3001/api/v1/cities');
+  //       setCities(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching cities:', error);
+  //     }
+  //   };
+  //   fetchCities();
+  // }, []);
+
   const handleChange = (e) => {
+    const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -64,7 +68,6 @@ const NewReservationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // dispatch(createReservation(formData));
     try {
       await axios.post('http://localhost:3001/api/v1/users/:user_id/reservations', formData);
       setSuccessMessage('Reservation created successfully!');
@@ -178,13 +181,25 @@ const NewReservationForm = () => {
         />
         <br />
 
-        <select name="city_id" value={formData.city_id} onChange={handleChange}>
-          <option value="">Select a City</option>
-          {cities.map((city) => (
-            <option key={city.id} value={city.id}>{city.name}</option>
-          ))}
-        </select>
+        <input
+          name="city_id"
+          type="number"
+          value={formData.city_id}
+          className="number"
+          onChange={handleChange}
+          required
+        />
         <br />
+
+        {/* <option value="">Select a City</option>
+          {cities.map((city) => (
+            <option
+              key={city.id}
+              value={city.id}
+            >
+              {city.name}
+            </option>
+          ))} */}
 
         <input
           type="textarea"
