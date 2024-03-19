@@ -7,6 +7,7 @@ import Users from './components/Users';
 import Login from './components/LoginComponent';
 import './App.css';
 import Register from './components/RegisterComponent';
+import NewReservationForm from './components/NewReservationForm';
 import Splash from './splash';
 
 const PrivateRoute = ({ children }) => {
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/users" element={<PrivateRoute><Users /></PrivateRoute>} />
+          <Route exact path="/NewReservation" element={<NewReservationForm />} />
           {/* More routes here if needed */}
           <Route component={() => <div>404 Not Found</div>} />
         </Routes>
