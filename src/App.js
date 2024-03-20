@@ -12,6 +12,7 @@ import Splash from './splash';
 import NewSpaceCwForm from './components/NewSpaceCwForm';
 import DeleteSpaceCwForm from './components/DeleteSpaceCwForm';
 import Sidebar from './components/SidebarComponent';
+import UserReservations from './components/UserReservations';
 
 const PrivateRoute = ({ children }) => {
   const userString = localStorage.getItem('user');
@@ -22,6 +23,8 @@ PrivateRoute.propTypes = {
   children: PropTypes.node.isRequired,
 };
 function App() {
+  const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
+  console.log('User ID:', userId);
   return (
     <Router>
       <div style={{ display: 'flex', minHeight: '100vh' }}>
@@ -39,7 +42,7 @@ function App() {
               <Route path="/newSpaceCw" element={<NewSpaceCwForm />} />
               <Route path="/deleteSpaceCw" element={<DeleteSpaceCwForm />} />
               <Route path="/NewReservation" element={<NewReservationForm />} />
-
+              <Route path="/MyReservations" element={<UserReservations userId={userId} />} />
               {/* Catch-all route for 404 Not Found */}
               <Route path="*" element={<div>404 Not Found</div>} />
             </Routes>
