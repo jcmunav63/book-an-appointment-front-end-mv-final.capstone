@@ -23,11 +23,6 @@
   border-radius: 20%;
 }
 
-.space-details-container {
-  text-align: center;
-  align-self: flex-start;
-}
-
 .configure-button {
   background-color: #5db80e;
   color: white;
@@ -36,7 +31,6 @@
   cursor: pointer;
   margin-top: 30px;
   margin-bottom: 30px;
-  align-self: flex-end;
   border-radius: 50px;
   font-weight: bold;
   font-size: 16px;
@@ -48,6 +42,8 @@
 }
 
 .space-details-container {
+  text-align: center;
+  align-self: flex-start;
   display: flex;
   flex-direction: column;
   align-items: center;
