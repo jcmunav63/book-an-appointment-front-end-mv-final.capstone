@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import Login from './components/LoginComponent';
 import Register from './components/RegisterComponent';
 import NewReservationForm from './components/NewReservationForm';
-import Splash from './splash';
+import Splash from './pages/splash';
 import NewSpaceCwForm from './components/NewSpaceCwForm';
 import DeleteSpaceCwForm from './components/DeleteSpaceCwForm';
 import Sidebar from './components/SidebarComponent';

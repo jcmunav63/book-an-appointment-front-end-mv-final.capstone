@@ -1,39 +1,63 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { fetchCoworkingSpace } from '../actions/homeActions';
+import '../assets/css/details-page.css';
 
 const DetailsPage = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { spaceId } = useParams();
   const { coworkingSpaces, loading, error } = useSelector((state) => state.coworkingSpaces);
 
-  const spaceDetails = coworkingSpaces && Array.isArray(coworkingSpaces)
-    ? coworkingSpaces.find((space) => space.id.toString() === spaceId)
-    : null;
-
   useEffect(() => {
-    if (!spaceDetails) {
+    if (!coworkingSpaces.some((space) => space.id.toString() === spaceId)) {
       dispatch(fetchCoworkingSpace(spaceId));
     }
-  }, [dispatch, spaceId, spaceDetails]);
+  }, [dispatch, spaceId, coworkingSpaces]);
+
+  const spaceDetails = coworkingSpaces.find((space) => space.id.toString() === spaceId) || {};
 
   return (
     <div className="details-page-container">
-      {loading && <p>Loading...</p>}
-      {error && (
-      <p>
-        Error:
-        {error}
-      </p>
-      )}
-      {spaceDetails && (
-        <div className="details-content">
-          <h1>{spaceDetails.name}</h1>
-          <img className="space-image" alt={spaceDetails.name} src={spaceDetails.image} />
-          <p>{spaceDetails.description}</p>
-        </div>
-      )}
+      <div className="details-layout">
+        {loading && <p className="loading-message">Loading...</p>}
+        {error && (
+          <div className="error-message">
+            Error:
+            {error}
+          </div>
+        )}
+        {spaceDetails && (
+          <>
+            <div className="space-image-container">
+              <img className="space-image" alt={spaceDetails.name} src={spaceDetails.image} />
+            </div>
+            <div className="space-details-container">
+              <h1 className="space-name">{spaceDetails.name}</h1>
+              <p className="space-model">
+                Model:
+                {spaceDetails.model}
+              </p>
+              <p className="space-adress">
+                Adress:
+                {spaceDetails.address}
+              </p>
+              <p className="space-discount">
+                Discount:
+                {spaceDetails.discount}
+              </p>
+              <p className="space-price">
+                Price:
+                {spaceDetails.price}
+              </p>
+              <p className="space-model">{spaceDetails.model}</p>
+              <p className="space-description">{spaceDetails.description}</p>
+              <button type="button" className="configure-button" onClick={() => navigate('/NewReservation')}>Reserve</button>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };
