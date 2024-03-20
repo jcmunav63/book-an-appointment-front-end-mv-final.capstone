@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('./assets/back-pic.jpg');
+  background-image: url('../back-pic.jpg');
   background-size: cover;
   background-position: right center;
 }
@@ -39,7 +39,7 @@
 .splash-login-btn,
 .splash-signup-btn {
   margin-bottom: 10px;
-  background-color: #a5b80e;
+  background-color: #5db80e;
   color: white;
   padding: 15px 32px;
   border: 0;
