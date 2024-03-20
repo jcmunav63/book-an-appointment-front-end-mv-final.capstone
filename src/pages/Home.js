@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchCoworkingSpaces } from '../actions/homeActions';
 import '../assets/css/home-page.css';
 
@@ -86,27 +87,29 @@ const Home = () => {
           </div>
           <div className="spaces-slider">
             {visibleSpaces && visibleSpaces.map((space) => (
-              <div className="space-item" key={space.id}>
-                <img className="space-image" alt={space.name} src={space.image} />
-                <div className="space-info">
-                  <strong>{space.name}</strong>
-                  <div className="decorative-dots">
-                    <div className="decorative-dot" />
-                    <div className="decorative-dot" />
-                    <div className="decorative-dot" />
-                    <div className="decorative-dot" />
-                    <div className="decorative-dot" />
-                    <div className="decorative-dot" />
-                    <div className="decorative-dot" />
-                    <div className="decorative-dot" />
-                    <div className="decorative-dot" />
-                    <div className="decorative-dot" />
-                    <div className="decorative-dot" />
-                    <div className="decorative-dot" />
+              <Link to={`/detailsPage/${space.id}`} key={space.id}>
+                <div className="space-item">
+                  <img className="space-image" alt={space.name} src={space.image} />
+                  <div className="space-info">
+                    <strong>{space.name}</strong>
+                    <div className="decorative-dots">
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                    </div>
+                    <p>{space.description}</p>
                   </div>
-                  <p>{space.description}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           <div
