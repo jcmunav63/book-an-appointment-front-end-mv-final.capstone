@@ -5,8 +5,12 @@
 }
 
 body {
-  /* width: 90%; */
   margin-left: 10%;
+  background-color: rgba(146, 181, 41, 0.8);
+}
+
+h2 {
+  margin-top: 40px;
 }
 
 ul {
@@ -21,7 +25,7 @@ ul {
   /* width: 100%; */
   padding: 20px 20px;
   margin-top: 15px;
-  background-color: rgb(253, 249, 195);
+  background-color: rgb(253, 251, 218);
   border: 1px solid gray;
   border-radius: 10px;
 }
