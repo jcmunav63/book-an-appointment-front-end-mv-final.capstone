@@ -1,18 +1,59 @@
-import React, { useEffect } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserReservations, deleteReservation } from '../actions/reservationActions';
+import '../assets/css/UserReservations.css';
 
 const UserReservations = ({ userId }) => {
   const dispatch = useDispatch();
   const reservations = useSelector((state) => state.reservation.reservations);
-  console.log('Reservations:', reservations);
+  const [spaceCwNames, setSpaceCwNames] = useState({});
+  const [cityNames, setCityNames] = useState({});
 
   useEffect(() => {
     if (userId) {
       dispatch(fetchUserReservations(userId));
     }
   }, [dispatch, userId]);
+
+  useEffect(() => {
+    const fetchSpaceCwNames = async () => {
+      try {
+        const names = {};
+        await Promise.all(reservations.map(async (reservation) => {
+          const response = await axios.get(`http://localhost:3001/api/v1/space_cws/${reservation.space_cw_id}`);
+          names[reservation.id] = response.data.name;
+        }));
+        setSpaceCwNames(names);
+      } catch (error) {
+        console.error('Error fetching space coworking names:', error);
+      }
+    };
+
+    if (reservations && reservations.length > 0) {
+      fetchSpaceCwNames();
+    }
+  }, [reservations]);
+
+  useEffect(() => {
+    const fetchCityNames = async () => {
+      try {
+        const names = {};
+        await Promise.all(reservations.map(async (reservation) => {
+          const response = await axios.get(`http://localhost:3001/api/v1/cities/${reservation.city_id}`);
+          names[reservation.id] = response.data.name;
+        }));
+        setCityNames(names);
+      } catch (error) {
+        console.error('Error fetching city names:', error);
+      }
+    };
+
+    if (reservations && reservations.length > 0) {
+      fetchCityNames();
+    }
+  }, [reservations]);
 
   const handleDelete = (reservationId) => {
     dispatch(deleteReservation(userId, reservationId));
@@ -21,69 +62,62 @@ const UserReservations = ({ userId }) => {
   return (
     <div>
       <h2>My Reservations</h2>
-      <p>
-        Reservations length:
+      <p className="p-center">
+        Nr. of Reservations:&nbsp;
         {reservations && reservations.length}
       </p>
-      {reservations && reservations.length > 0 ? (
-        <ul>
-          {reservations.map((reservation) => (
-            <li key={reservation.id}>
-              {/* <p>User ID: {reservation.user_id}</p> */}
-              <p>
-                Space Coworking Name:
-                {reservation.space_cw_name}
-              </p>
+      <div>
+        {reservations && reservations.length > 0 ? (
+          <ul>
+            {reservations.map((reservation) => (
+              <li key={reservation.id} className="card">
+                <p>
+                  Coworking Space Name:&nbsp;
+                  <span className="strong">{spaceCwNames[reservation.id]}</span>
+                </p>
 
-              <img
-                src={reservation.space_cw_image}
-                alt={reservation.space_cw_name}
-              />
+                <p>
+                  Date Reserved:&nbsp;
+                  <span className="strong">{reservation.date_reserved}</span>
+                </p>
 
-              <p>
-                Date Reserved:
-                {reservation.date_reserved}
-              </p>
+                <p>
+                  Start Date:&nbsp;
+                  <span className="strong">{reservation.start_date}</span>
+                </p>
 
-              <p>
-                Start Date:
-                {reservation.start_date}
-              </p>
+                <p>
+                  End Date:&nbsp;
+                  <span className="strong">{reservation.end_date}</span>
+                </p>
 
-              <p>
-                End Date:
-                {reservation.end_date}
-              </p>
+                <p>
+                  City Name:&nbsp;
+                  <span className="strong">{cityNames[reservation.id]}</span>
+                </p>
 
-              <p>
-                City Name:
-                {reservation.city_name}
-              </p>
+                <p>
+                  Comments:&nbsp;
+                  <span className="strong">{reservation.comments}</span>
+                </p>
 
-              <p>
-                Comments:
-                {reservation.comments}
-              </p>
-
-              <button
-                type="button"
-                onClick={() => handleDelete(reservation.user_id, reservation.id)}
-              >
-                Delete
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleDelete(reservation.id)}
-              >
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No reservations found.</p>
-      )}
+                <div className="btn-container">
+                  <button
+                    type="button"
+                    className="delete-btn"
+                    onClick={() => handleDelete(reservation.user_id,
+                      reservation.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No reservations found.</p>
+        )}
+      </div>
     </div>
   );
 };
