@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import {
   BrowserRouter as Router, Route, Routes, Navigate,
 } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './components/LoginComponent';
-import './App.css';
 import Register from './components/RegisterComponent';
 import NewReservationForm from './components/NewReservationForm';
 import Splash from './splash';
@@ -19,31 +19,36 @@ const PrivateRoute = ({ children }) => {
   const user = userString ? JSON.parse(userString) : null;
   return user ? children : <Navigate to="/" />;
 };
-
 PrivateRoute.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
 function App() {
   const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
   console.log('User ID:', userId);
   return (
     <Router>
-      <div id="main-div">
-        <Routes>
-          <Route exact path="/" element={<Splash />} />
-          <Route exact path="/newSpaceCw" element={<NewSpaceCwForm />} />
-          <Route exact path="/deleteSpaceCw" element={<DeleteSpaceCwForm />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route exact path="/NewReservation" element={<NewReservationForm />} />
-          <Route exact path="/MyReservations" element={<UserReservations userId={userId} />} />
-          <Route exact path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
-          {/* More routes here if needed */}
-          <Route component={() => <div>404 Not Found</div>} />
-        </Routes>
+      <div style={{ display: 'flex', minHeight: '100vh' }}>
+        <Sidebar />
+        <div style={{ flexGrow: 1 }}>
+          <div className="main-content-area">
+            <Routes>
+              {/* Routes without sidebar */}
+              <Route path="/" element={<Splash />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+
+              {/* Protected routes */}
+              <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
+              <Route path="/newSpaceCw" element={<NewSpaceCwForm />} />
+              <Route path="/deleteSpaceCw" element={<DeleteSpaceCwForm />} />
+              <Route path="/NewReservation" element={<NewReservationForm />} />
+              <Route path="/MyReservations" element={<UserReservations userId={userId} />} />
+              {/* Catch-all route for 404 Not Found */}
+              <Route path="*" element={<div>404 Not Found</div>} />
+            </Routes>
+          </div>
+        </div>
       </div>
-      <Sidebar />
     </Router>
   );
 }
