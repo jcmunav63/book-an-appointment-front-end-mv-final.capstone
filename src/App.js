@@ -14,6 +14,7 @@ import DeleteSpaceCwForm from './components/DeleteSpaceCwForm';
 import Sidebar from './components/SidebarComponent';
 import DetailsPage from './pages/DetailsPage';
 import UserReservations from './components/UserReservations';
+
 const PrivateRoute = ({ children }) => {
   const userString = localStorage.getItem('user');
   const user = userString ? JSON.parse(userString) : null;
@@ -24,7 +25,6 @@ PrivateRoute.propTypes = {
 };
 function App() {
   const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
-  console.log('User ID:', userId);
   return (
     <Router>
       <div style={{ display: 'flex', minHeight: '100vh' }}>
