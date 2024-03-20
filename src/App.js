@@ -12,6 +12,7 @@ import Splash from './splash';
 import NewSpaceCwForm from './components/NewSpaceCwForm';
 import DeleteSpaceCwForm from './components/DeleteSpaceCwForm';
 import Sidebar from './components/SidebarComponent';
+import DetailsPage from './pages/DetailsPage';
 
 const PrivateRoute = ({ children }) => {
   const userString = localStorage.getItem('user');
@@ -36,6 +37,7 @@ function App() {
 
               {/* Protected routes */}
               <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
+              <Route path="/detailsPage" element={<DetailsPage />} />
               <Route path="/newSpaceCw" element={<NewSpaceCwForm />} />
               <Route path="/deleteSpaceCw" element={<DeleteSpaceCwForm />} />
               <Route path="/NewReservation" element={<NewReservationForm />} />
