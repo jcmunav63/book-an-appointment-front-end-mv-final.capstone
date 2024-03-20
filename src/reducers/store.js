@@ -1,9 +1,35 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import rootReducer from './rootReducer';
 
-// eslint-disable-next-line import/prefer-default-export
+// Persist configuration
+const persistConfig = {
+  key: 'root',
+  storage,
+  blacklist: ['auth'],
+};
+
+// Persisted reducer
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+// Store configuration
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: {
+    // Ignore these action types from redux-persist as they may contain non-serializable data
+      ignoredActions: [
+        'persist/PERSIST',
+        'persist/REHYDRATE',
+        'persist/PAUSE',
+        'persist/PURGE',
+        'persist/REGISTER',
+        'persist/FLUSH',
+      ],
+    },
+  }),
 });
 
+export const persistor = persistStore(store); // This creates a persistor object based on store
 export default store;
