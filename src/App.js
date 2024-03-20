@@ -37,7 +37,7 @@ function App() {
 
               {/* Protected routes */}
               <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
-              <Route path="/detailsPage" element={<DetailsPage />} />
+              <Route path="/detailsPage/:spaceId" element={<DetailsPage />} />
               <Route path="/newSpaceCw" element={<NewSpaceCwForm />} />
               <Route path="/deleteSpaceCw" element={<DeleteSpaceCwForm />} />
               <Route path="/NewReservation" element={<NewReservationForm />} />
