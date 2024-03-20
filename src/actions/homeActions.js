@@ -19,3 +19,23 @@ export const fetchCoworkingSpaces = (userId) => async (dispatch) => {
     });
   }
 };
+
+export const FETCH_COWORKING_SPACE_REQUEST = 'FETCH_COWORKING_SPACE_REQUEST';
+export const FETCH_COWORKING_SPACE_SUCCESS = 'FETCH_COWORKING_SPACE_SUCCESS';
+export const FETCH_COWORKING_SPACE_FAILURE = 'FETCH_COWORKING_SPACE_FAILURE';
+
+export const fetchCoworkingSpace = (spaceId) => async (dispatch) => {
+  dispatch({ type: FETCH_COWORKING_SPACE_REQUEST });
+  try {
+    const response = await axios.get(`http://127.0.0.1:3001/api/v1/space_cws/${spaceId}`);
+    dispatch({
+      type: FETCH_COWORKING_SPACE_SUCCESS,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: FETCH_COWORKING_SPACE_FAILURE,
+      payload: error.message,
+    });
+  }
+};
