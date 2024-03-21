@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from '../assets/stylesheets/DeleteSpaceCwForm.module.css';
 
 const DeleteSpaceCwForm = () => {
+  const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
+
   const [formData, setFormData] = useState({
     space_cw_id: '',
-    user_id: '',
+    user_id: userId,
   });
 
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    // Update formData whenever the userId changes
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      user_id: userId,
+    }));
+  }, [userId]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -50,12 +60,9 @@ const DeleteSpaceCwForm = () => {
           {/* type="hidden"; value={loggedInUserId} */}
           {/* <label htmlFor="user_id">User Id:</label> */}
           <input
-            type="number"
+            type="hidden"
             name="user_id"
-            className={styles.formField}
-            placeholder="User_id:"
             value={formData.user_id}
-            onChange={handleChange}
             required
           />
 

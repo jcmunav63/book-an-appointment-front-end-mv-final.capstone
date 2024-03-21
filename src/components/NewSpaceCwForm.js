@@ -90,7 +90,7 @@ const NewSpaceCwForm = () => {
             type="number"
             name="price"
             className={styles.formField}
-            placeholder="Price: 10.0"
+            placeholder="Price: $10.0"
             value={formData.price}
             onChange={handleChange}
           />
@@ -111,7 +111,7 @@ const NewSpaceCwForm = () => {
             type="number"
             name="discount"
             className={styles.formField}
-            placeholder="Discount: 10.0"
+            placeholder="Discount: $10.0"
             value={formData.discount}
             onChange={handleChange}
           />
@@ -129,15 +129,18 @@ const NewSpaceCwForm = () => {
 
           {/* You can hide user_id; set it dynamically using logged-in user; */}
           {/* type="hidden"; value={loggedInUserId} */}
-          {/* <label htmlFor="user_id">User Id:</label> */}
-          <input
-            type="number"
-            name="user_id"
-            className={styles.formField}
-            value={formData.user_id}
-            onChange={handleChange}
-            required
-          />
+          <label htmlFor="user_id">
+            Your actual user ID (Auto-filled):
+            <input
+              type="number"
+              name="user_id"
+              className={styles.formField}
+              value={formData.user_id}
+              onChange={handleChange}
+              required
+              readOnly
+            />
+          </label>
 
           {/* Success and error messages */}
           {successMessage && <p className="success-message">{successMessage}</p>}
