@@ -1,22 +1,15 @@
 .newCwsContainer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
+  position: relative;
   width: 100%;
+  height: 100%;
   background-image: url('../back2-pic.jpg');
   background-size: cover;
   background-position: right center;
 }
 
 .newCwsOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  min-height: 100vh;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,50 +18,76 @@
 }
 
 .newCwsTitle {
-  width: 80%;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: #fff;
   text-transform: uppercase;
   font-weight: 500;
   text-align: center;
+  font-size: 1.5rem;
 }
 
 .formContainer {
-  width: 40%;
+  max-width: 500px;
+  margin: auto;
   background-color: rgb(230, 230, 230);
   border-radius: 15px;
-  padding: 40px;
+  padding: 20px;
 }
 
-.formField {
-  width: 95%;
-  margin-bottom: 6px;
-  padding: 5px;
+.formField,
+.formField input[type="text"],
+.formField input[type="number"],
+.formField input[type="email"],
+.formField textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.formField textarea {
+  resize: none;
+  height: 150px;
+}
+
+.formField input[type="text"],
+.formField input[type="number"],
+.formField input[type="email"] {
+  height: 40px;
 }
 
 .newSpaceBtn {
-  width: 90%;
-  margin-top: 20px;
-  padding: 10px;
+  display: block;
+  width: 100%;
+  padding: 15px;
   background-color: greenyellow;
   color: #fff;
   border-radius: 20px;
   border: none;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: box-shadow 0.3s;
 }
 
 .newSpaceBtn:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-@media screen and (min-width: 769px) {
-  .newCwsContainer {
-    width: 80%;
-    padding: 0;
+@media screen and (min-width: 768px) {
+  .newCwsTitle {
+    font-size: 2.5rem;
   }
 
-  .newCwsTitle {
-    font-size: 2.5em;
+  .formContainer {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .formContainer {
+    width: 50%;
   }
 }
