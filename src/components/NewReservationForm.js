@@ -91,106 +91,133 @@ const NewReservationForm = () => {
       <div className={styles.mainDivOverlay}>
         <h2 className={styles.newReservationTitle}>Create a New Reservation</h2>
         <form className={styles.formContainer} onSubmit={handleSubmit}>
-          <input
-            type="number"
-            name="user_id"
-            className={styles.formField}
-            value={formData.user_id}
-            onChange={handleChange}
-            placeholder="User Id:"
-            readOnly
-          />
+          <label htmlFor="user_id" className={styles.formLabel}>
+            User ID (Auto-filled):
+            <input
+              type="number"
+              name="user_id"
+              className={styles.formField}
+              value={formData.user_id}
+              readOnly
+            />
+          </label>
           <br />
 
-          <select
-            name="space_cw_id"
-            className={styles.formField}
-            value={formData.space_cw_id}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select a Space_cw</option>
-            {spaceCws.map((spaceCw) => (
-              <option key={spaceCw.id} value={spaceCw.id}>
-                {spaceCw.name}
-              </option>
-            ))}
-          </select>
+          <label htmlFor="space_cw_id" className={styles.formLabel}>
+            Choose a Workspace:
+            <select
+              id="space_cw_id"
+              name="space_cw_id"
+              className={styles.formField}
+              value={formData.space_cw_id}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select a Workspace</option>
+              {spaceCws.map((spaceCw) => (
+                <option key={spaceCw.id} value={spaceCw.id}>
+                  {spaceCw.name}
+                </option>
+              ))}
+            </select>
+          </label>
           <br />
 
-          <input
-            type="date"
-            name="date_reserved"
-            className={styles.formField}
-            value={formData.date_reserved}
-            onChange={handleChange}
-            placeholder="Date Reserved:"
-            required
-          />
+          <label htmlFor="date_reserved" className={styles.formLabel}>
+            Reservation Date:
+            <input
+              type="date"
+              id="date_reserved"
+              name="date_reserved"
+              className={styles.formField}
+              value={formData.date_reserved}
+              onChange={handleChange}
+              required
+            />
+          </label>
           <br />
 
-          <input
-            type="date"
-            name="date_cancelled"
-            className={styles.formField}
-            value={formData.date_cancelled}
-            onChange={handleChange}
-            placeholder="Date Cancelled:"
-          />
+          <label htmlFor="date_cancelled" className={styles.formLabel}>
+            Cancellation Date (Optional):
+            <input
+              type="date"
+              id="date_cancelled"
+              name="date_cancelled"
+              className={styles.formField}
+              value={formData.date_cancelled}
+              onChange={handleChange}
+            />
+          </label>
           <br />
 
-          <input
-            type="date"
-            name="start_date"
-            className={styles.formField}
-            value={formData.start_date}
-            onChange={handleChange}
-            placeholder="Start Date:"
-            required
-          />
+          <label htmlFor="start_date" className={styles.formLabel}>
+            Start Date:
+            <input
+              type="date"
+              id="start_date"
+              name="start_date"
+              className={styles.formField}
+              value={formData.start_date}
+              onChange={handleChange}
+              required
+            />
+            <br />
+          </label>
+
+          <label htmlFor="end_date" className={styles.formLabel}>
+            End Date:
+            <input
+              type="date"
+              id="end_date"
+              name="end_date"
+              className={styles.formField}
+              value={formData.end_date}
+              onChange={handleChange}
+              required
+            />
+          </label>
           <br />
 
-          <input
-            type="date"
-            name="end_date"
-            className={styles.formField}
-            value={formData.end_date}
-            onChange={handleChange}
-            placeholder="Start Date:"
-            required
-          />
+          <label htmlFor="start_time" className={styles.formLabel}>
+            Start Time:
+            <input
+              type="time"
+              id="start_time"
+              name="start_time"
+              className={styles.formField}
+              value={formData.start_time}
+              onChange={handleChange}
+              required
+            />
+          </label>
           <br />
 
-          <input
-            type="time"
-            name="start_time"
-            className={styles.formField}
-            value={formData.start_time}
-            onChange={handleChange}
-            placeholder="Start TIme:"
-            required
-          />
+          <label htmlFor="end_time" className={styles.formLabel}>
+            End Time:
+            <input
+              type="time"
+              id="end_time"
+              name="end_time"
+              className={styles.formField}
+              value={formData.end_time}
+              onChange={handleChange}
+              required
+            />
+          </label>
           <br />
 
-          <input
-            type="time"
-            name="end_time"
-            className={styles.formField}
-            value={formData.end_time}
-            onChange={handleChange}
-            placeholder="End TIme:"
-            required
-          />
-          <br />
-
-          <input
-            name="city_id"
-            type="number"
-            value={formData.city_id}
-            className={styles.formField}
-            onChange={handleChange}
-            required
-          />
+          <label htmlFor="city_id" className={styles.formLabel}>
+            City ID:
+            <input
+              type="number"
+              id="city_id"
+              name="city_id"
+              className={styles.formField}
+              value={formData.city_id}
+              onChange={handleChange}
+              required
+            />
+          </label>
           <br />
 
           {/* <option value="">Select a City</option>
@@ -203,22 +230,22 @@ const NewReservationForm = () => {
               </option>
             ))} */}
 
-          <input
-            type="textarea"
-            name="comments"
-            className={styles.formField}
-            value={formData.comments}
-            onChange={handleChange}
-            placeholder="Comments:"
-            rows="3"
-            required
-          />
+          <label htmlFor="comments" className={styles.formLabel}>
+            Comments:
+            <textarea
+              id="comments"
+              name="comments"
+              className={styles.formField}
+              value={formData.comments}
+              onChange={handleChange}
+              rows="3"
+              required
+            />
+          </label>
+
           <br />
 
-          <button
-            type="submit"
-            className={styles.newReservationBtn}
-          >
+          <button type="submit" className={styles.newReservationBtn}>
             Create Reservation
           </button>
         </form>
