@@ -22,7 +22,6 @@ const Login = () => {
 
     if (isSuccess || user) {
       navigate('/home');
-      console.log('Login successful');
     }
 
     dispatch(reset()); // Reset the auth state on component unmount
