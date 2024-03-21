@@ -8,10 +8,11 @@ import Home from './pages/Home';
 import Login from './components/LoginComponent';
 import Register from './components/RegisterComponent';
 import NewReservationForm from './components/NewReservationForm';
-import Splash from './splash';
+import Splash from './pages/splash';
 import NewSpaceCwForm from './components/NewSpaceCwForm';
 import DeleteSpaceCwForm from './components/DeleteSpaceCwForm';
 import Sidebar from './components/SidebarComponent';
+import DetailsPage from './pages/DetailsPage';
 import UserReservations from './components/UserReservations';
 
 const PrivateRoute = ({ children }) => {
@@ -24,7 +25,6 @@ PrivateRoute.propTypes = {
 };
 function App() {
   const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
-  console.log('User ID:', userId);
   return (
     <Router>
       <div style={{ display: 'flex', minHeight: '100vh' }}>
@@ -39,6 +39,7 @@ function App() {
 
               {/* Protected routes */}
               <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
+              <Route path="/detailsPage/:spaceId" element={<DetailsPage />} />
               <Route path="/newSpaceCw" element={<NewSpaceCwForm />} />
               <Route path="/deleteSpaceCw" element={<DeleteSpaceCwForm />} />
               <Route path="/NewReservation" element={<NewReservationForm />} />
