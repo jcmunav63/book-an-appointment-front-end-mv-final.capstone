@@ -10,6 +10,7 @@
 
 - [📗 Table of Contents](#table-of-contents)
 - [📖 About project ](#about-project)
+  - [📖 Kanban Board ](#kanban-board)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -33,6 +34,23 @@
 
 The Book An Appointment App - Front End - Final Capstone project is a project using React.js and Redux, that connects to a back-end API project which provides the data.
 
+Front-end application name: book-an-appointment-front-end-mv-final-capstone link: https://github.com/jcmunav63/book-an-appointment-front-end-mv-final-capstone.git
+
+Back-end application name: book-an-appointment-back-end-mv-final-capstone link: https://github.com/jcmunav63/book-an-appointment-back-end-mv-final-capstone.git
+
+
+## 📖 KANBAN BOARD - Book An Appointment Web App - Ruby on Rails Back-End <a name="kanban-board"></a>
+
+- Number of team members: 3 (Julio Alejandro Quezada, Kazim Mohammadi, Juan Carlos Muñoz)
+
+- Link to our Kanban Board: https://github.com/users/jcmunav63/projects/6/views/1
+
+- Links to 2 images that show our Kanban Board at the beginning...
+  - First image (Kanban Board - table view) https://drive.google.com/file/d/1ZEWuTbIN_ITMl13PYAsZh3aQ4zbOEOJT/view?usp=drive_link
+
+  - Second image (Kanban Board - table view) https://drive.google.com/file/d/132tbQEmSjXSmgK0uiCKLVfwkUYCtLdNi/view?usp=drive_link
+
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -45,6 +63,8 @@ The Book An Appointment App - Front End - Final Capstone project is a project us
 ### Key Features <a name="key-features"></a>
 - **Set up a React & Redux front-end project.**
 - **Connect the React-Redux project to a back-end API endpoint, provided by the Ruby on Rails complementary project.**
+- **Implement a splash screen, a navigation panel, in our case, we implemented an authentication feature (login & sign up), a main page of products, a details page of a specific product, and a page for reservations of products.**
+- **Implement some functionalities for Products and Reservations: create, display (list), and delete.**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -76,24 +96,26 @@ Prerquisites: Node.js, npm...
 
 ```sh
   cd my-folder
-  git clone https://github.com/jcmunav63/book-an-appointment-back-end-mv-final-capstone.git
+  git clone https://github.com/jcmunav63/book-an-appointment-front-end-mv-final-capstone.git
 ```
 
 ### Install
 
-This project requires the following dependencies: Additionally, the project requires the following linters checkers: Stylelint (CSS styles).
+This project requires the following dependencies: Additionally, the project requires the following linters checkers: Stylelint (CSS styles), ESLint (JavaScript).
 
 ```sh
-bundle install
+npx create-react-app my-app
+
+npm install @reduxjs/toolkit
 ```
 
 ### Usage
 
 To run the project, navigate to the project directory and execute the following command:
 
-Start the Webpack web server (Puma server) typing the following command...
+Start the Webpack web server typing the following command...
 ```sh
-  
+  npm start
 ```
 
 ### Run tests
@@ -106,6 +128,12 @@ npm install --save-dev stylelint@13.x stylelint-scss@3.x stylelint-config-standa
 ```
 - Remember to copy the .stylelintrc.json file to the root directory.
 
+Install ESlint linters checker using the following command...
+```sh
+npm install --save-dev eslint@7.x eslint-config-airbnb@18.x eslint-plugin-import@2.x eslint-plugin-jsx-a11y@6.x eslint-plugin-react@7.x eslint-plugin-react-hooks@4.x @babel/eslint-parser@7.x @babel/core@7.x  @babel/plugin-syntax-jsx@7.x  @babel/preset-react@7.x @babel/preset-react@7.x
+```
+- Remember to copy the .eslintrc.json and the .babelrc files to the root directory.
+
 - Copy the linters.yml file inside of path .github/workflows
 
 
@@ -116,11 +144,12 @@ Run the following command for CSS code...
 npx stylelint "**/*.{css,scss}"
 ```
 
-* Implement unit tests using RSpec (pending).
+Run the following command for JavaScript code...
+```sh
+npx eslint "**/*.{js,jsx}"
+```
 
 ### Deployment
-
-You can deploy this project using:
 
 Not available at the moment.
 
@@ -148,6 +177,7 @@ Not available at the moment.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
 ## 🔭 Future Features <a name="future-features"></a>
 
 - **No future features.**
@@ -169,7 +199,9 @@ Thanks in advance.
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank all of my colleagues who inspire me to do my best everyday.
+* We would like to acknowledge that our application is based on Murat Korkmaz application design called "Vespa - Responsive Redesign", which is open for use under the [Creative Commons license](https://creativecommons.org/licenses/by-nc/4.0/). You can find this design on [Behance](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign). We are very grateful to Murat Korkmaz for his excellent contribution.
+
+* We would like to thank our colleagues, who inspire us to do our best everyday.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -177,7 +209,7 @@ I would like to thank all of my colleagues who inspire me to do my best everyday
 
 **Did you create this project from scratch?**
 
-  - Yes, it is a complete Ruby on Rails project for creating a web blog, with connection to an external PostgreSQL database, CRUD operations, data validation, user authentication, testing, and API usage.
+  - Yes. It is a complete Ruby on Rails project on the backend with connection to React.js & Redux.js on the frontend. It uses two repos, this one for the front-end and another one for the back-end.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
