@@ -36,7 +36,7 @@ function Sidebar() {
         <ul>
           <li><button type="button" onClick={() => navigateTo('/home')}>HOME</button></li>
           <li><button type="button" onClick={() => navigateTo('/NewReservation')}>RESERVE</button></li>
-          <li><button type="button" onClick={() => navigateTo('#')}>RESERVATIONS</button></li>
+          <li><button type="button" onClick={() => navigateTo('/MyReservations')}>RESERVATIONS</button></li>
           <li><button type="button" onClick={() => navigateTo('/newSpaceCw')}>ADD</button></li>
           <li><button type="button" onClick={() => navigateTo('/deleteSpaceCw')}>DELETE</button></li>
           <li><button type="button" onClick={() => navigateTo('#')}>LOGOUT</button></li>
