@@ -29,7 +29,6 @@ const UserReservations = ({ userId }) => {
         setSpaceCwNames(names);
       } catch (error) {
         setError('space coworking names:');
-        // console.error('Error fetching space coworking names:', error);
       }
     };
 
@@ -48,7 +47,7 @@ const UserReservations = ({ userId }) => {
         }));
         setCityNames(names);
       } catch (error) {
-        console.error('Error fetching city names:', error);
+        setError('Error fetching city names:');
       }
     };
 
