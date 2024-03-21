@@ -10,6 +10,7 @@ const UserReservations = ({ userId }) => {
   const reservations = useSelector((state) => state.reservation.reservations);
   const [spaceCwNames, setSpaceCwNames] = useState({});
   const [cityNames, setCityNames] = useState({});
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (userId) {
@@ -27,7 +28,8 @@ const UserReservations = ({ userId }) => {
         }));
         setSpaceCwNames(names);
       } catch (error) {
-        console.error('Error fetching space coworking names:', error);
+        setError('space coworking names:');
+        // console.error('Error fetching space coworking names:', error);
       }
     };
 
@@ -60,63 +62,66 @@ const UserReservations = ({ userId }) => {
   };
 
   return (
-    <div>
-      <h2>My Reservations</h2>
-      <p className="p-center">
-        Nr. of Reservations:&nbsp;
-        {reservations && reservations.length}
-      </p>
-      <div>
-        {reservations && reservations.length > 0 ? (
-          <ul>
-            {reservations.map((reservation) => (
-              <li key={reservation.id} className="card">
-                <p>
-                  Coworking Space Name:&nbsp;
-                  <span className="strong">{spaceCwNames[reservation.id]}</span>
-                </p>
+    <div className="container">
+      <div className="card-container">
+        <h2>My Reservations</h2>
+        <p className="p-center">
+          Nr. of Reservations:&nbsp;
+          {reservations && reservations.length}
+        </p>
+        <div>
+          {reservations && reservations.length > 0 ? (
+            <ul className="ul">
+              {reservations.map((reservation) => (
+                <li key={reservation.id} className="card">
+                  <p>
+                    Coworking Space Name:&nbsp;
+                    <span className="strong">{spaceCwNames[reservation.id]}</span>
+                  </p>
 
-                <p>
-                  Date Reserved:&nbsp;
-                  <span className="strong">{reservation.date_reserved}</span>
-                </p>
+                  <p>
+                    Date Reserved:&nbsp;
+                    <span className="strong">{reservation.date_reserved}</span>
+                  </p>
 
-                <p>
-                  Start Date:&nbsp;
-                  <span className="strong">{reservation.start_date}</span>
-                </p>
+                  <p>
+                    Start Date:&nbsp;
+                    <span className="strong">{reservation.start_date}</span>
+                  </p>
 
-                <p>
-                  End Date:&nbsp;
-                  <span className="strong">{reservation.end_date}</span>
-                </p>
+                  <p>
+                    End Date:&nbsp;
+                    <span className="strong">{reservation.end_date}</span>
+                  </p>
 
-                <p>
-                  City Name:&nbsp;
-                  <span className="strong">{cityNames[reservation.id]}</span>
-                </p>
+                  <p>
+                    City Name:&nbsp;
+                    <span className="strong">{cityNames[reservation.id]}</span>
+                  </p>
 
-                <p>
-                  Comments:&nbsp;
-                  <span className="strong">{reservation.comments}</span>
-                </p>
+                  <p>
+                    Comments:&nbsp;
+                    <span className="strong">{reservation.comments}</span>
+                  </p>
 
-                <div className="btn-container">
-                  <button
-                    type="button"
-                    className="delete-btn"
-                    onClick={() => handleDelete(reservation.user_id,
-                      reservation.id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No reservations found.</p>
-        )}
+                  <div className="btn-container">
+                    <button
+                      type="button"
+                      className="delete-btn"
+                      onClick={() => handleDelete(reservation.user_id,
+                        reservation.id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No reservations found.</p>
+          )}
+        </div>
+        {error && <p>{error}</p>}
       </div>
     </div>
   );
