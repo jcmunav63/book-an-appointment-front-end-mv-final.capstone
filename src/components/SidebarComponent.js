@@ -1,8 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '../features/auth/authSlice';
 import styles from '../assets/stylesheets/sidebar.module.css';
 
 function Sidebar() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isActive, setIsActive] = React.useState(false);
 
@@ -13,6 +16,11 @@ function Sidebar() {
 
   const clickHandle = () => {
     setIsActive(!isActive);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/');
   };
 
   React.useEffect(() => {
@@ -36,10 +44,10 @@ function Sidebar() {
         <ul>
           <li><button type="button" onClick={() => navigateTo('/home')}>HOME</button></li>
           <li><button type="button" onClick={() => navigateTo('/NewReservation')}>RESERVE</button></li>
-          <li><button type="button" onClick={() => navigateTo('#')}>RESERVATIONS</button></li>
+          <li><button type="button" onClick={() => navigateTo('/MyReservations')}>RESERVATIONS</button></li>
           <li><button type="button" onClick={() => navigateTo('/newSpaceCw')}>ADD</button></li>
           <li><button type="button" onClick={() => navigateTo('/deleteSpaceCw')}>DELETE</button></li>
-          <li><button type="button" onClick={() => navigateTo('#')}>LOGOUT</button></li>
+          <li><button type="button" onClick={handleLogout}>LOGOUT</button></li>
         </ul>
       </div>
       <button type="button" className={`${styles.icon} ${isActive ? styles.closeIcon : ''}`} onClick={clickHandle} aria-label="Toggle Sidebar" />

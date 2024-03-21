@@ -29,8 +29,6 @@ const authService = {
         'Content-Type': 'application/json',
       },
     });
-    console.log('Full response:', response);
-    console.log('This is data', response.data);
     return response;
   },
 
