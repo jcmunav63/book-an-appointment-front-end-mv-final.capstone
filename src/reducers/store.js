@@ -10,8 +10,16 @@ const persistConfig = {
   blacklist: ['auth'],
 };
 
+const appReducer = (state, action) => {
+  if (action.type === 'CLEAR_PERSISTED_STATE') {
+    storage.removeItem('persist:root');
+    // return rootReducer(undefined, action);
+  }
+  return rootReducer(state, action);
+};
+
 // Persisted reducer
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, appReducer);
 
 // Store configuration
 const store = configureStore({

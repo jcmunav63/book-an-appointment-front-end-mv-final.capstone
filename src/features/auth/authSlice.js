@@ -33,12 +33,16 @@ export const login = createAsyncThunk('auth/login', async ({ email, password }, 
   }
 });
 
-// eslint-disable-next-line consistent-return
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await AuthService.logout();
-    localStorage.removeItem('user'); // Clear user from local storage on logout
+    localStorage.removeItem('user');
+    // No errors: dispatch the CLEAR_PERSISTED_STATE action
+    thunkAPI.dispatch({ type: 'CLEAR_PERSISTED_STATE' });
+    // Resolve the promise, signaling successful completion without specific data
+    return null; // Explicitly return null to satisfy ESLint
   } catch (error) {
+    // If there's an error, reject the promise and pass the error data
     return thunkAPI.rejectWithValue(error.response.data);
   }
 });
