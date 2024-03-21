@@ -18,10 +18,11 @@ const NewReservationForm = () => {
   });
 
   const [spaceCws, setSpaceCws] = useState([]);
+  const [cities, setCities] = useState([]);
 
-  // const [cities, setCities] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
@@ -39,23 +40,24 @@ const NewReservationForm = () => {
           city_id: cityIds[0] || '',
         }));
       } catch (error) {
-        console.error('Error fetching Space_cws:', error);
+        setError('Error fetching Space_cws:');
       }
     };
     fetchSpaceCws();
   }, [formData.user_id]);
 
-  // useEffect(() => {
-  //   const fetchCities = async () => {
-  //     try {
-  //       const response = await axios.get('http://localhost:3001/api/v1/cities');
-  //       setCities(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching cities:', error);
-  //     }
-  //   };
-  //   fetchCities();
-  // }, []);
+  useEffect(() => {
+    const fetchCities = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/api/v1/all_cities');
+        setCities(response.data);
+        console.log(cities);
+      } catch (error) {
+        setError('Error fetching cities:');
+      }
+    };
+    fetchCities();
+  }, []);
 
   const handleChange = (e) => {
     const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
@@ -77,7 +79,6 @@ const NewReservationForm = () => {
       }, 5000); // 5 seconds
       setErrorMessage('');
     } catch (error) {
-      console.error('Error creating reservation:', error);
       setErrorMessage('Error creating reservation. Please try again later.');
       setTimeout(() => {
         setErrorMessage('');
@@ -208,27 +209,22 @@ const NewReservationForm = () => {
 
           <label htmlFor="city_id" className={styles.formLabel}>
             City ID:
-            <input
-              type="number"
-              id="city_id"
+            <select
               name="city_id"
               className={styles.formField}
               value={formData.city_id}
               onChange={handleChange}
               required
-            />
+            >
+              <option value="">Select a City</option>
+              {cities.map((city) => (
+                <option key={city.city_id} value={city.city_id}>
+                  {`${city.country_abbrev} - ${city.state_abbrev} - ${city.city_name}`}
+                </option>
+              ))}
+            </select>
           </label>
           <br />
-
-          {/* <option value="">Select a City</option>
-            {cities.map((city) => (
-              <option
-                key={city.id}
-                value={city.id}
-              >
-                {city.name}
-              </option>
-            ))} */}
 
           <label htmlFor="comments" className={styles.formLabel}>
             Comments:
@@ -252,6 +248,7 @@ const NewReservationForm = () => {
         {successMessage && <p className="success-message">{successMessage}</p>}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
+      {error && <p>{error}</p>}
     </div>
   );
 };
