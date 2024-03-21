@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import AuthService from '../../services/AuthService';
 
-// Async thunks
 export const register = createAsyncThunk('auth/register', async ({
   name, email, password, passwordConfirmation, role,
 }, thunkAPI) => {
@@ -40,7 +39,6 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await AuthService.logout();
     localStorage.removeItem('user'); // Clear user from local storage on logout
   } catch (error) {
-    console.error('Logout error:', error);
     return thunkAPI.rejectWithValue(error.response.data);
   }
 });
