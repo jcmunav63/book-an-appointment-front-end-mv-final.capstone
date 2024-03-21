@@ -149,10 +149,6 @@ Run the following command for JavaScript code...
 npx eslint "**/*.{js,jsx}"
 ```
 
-### Deployment
-
-Not available at the moment.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
