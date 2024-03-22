@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from '../assets/stylesheets/NewSpaceCwForm.module.css';
 
@@ -12,7 +12,7 @@ const NewSpaceCwForm = () => {
     image: '',
     discount: '',
     category: '',
-    user_id: '1',
+    user_id: '',
   });
 
   const [successMessage, setSuccessMessage] = useState('');
@@ -21,6 +21,17 @@ const NewSpaceCwForm = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    // Get user ID from local storage
+    const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
+    if (userId) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        user_id: userId,
+      }));
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
