@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import rootReducer from './rootReducer';
+import { CLEAR_PERSISTED_STATE } from '../actions/clearState';
 
 // Persist configuration
 const persistConfig = {
@@ -11,9 +12,9 @@ const persistConfig = {
 };
 
 const appReducer = (state, action) => {
-  if (action.type === 'CLEAR_PERSISTED_STATE') {
+  if (action.type === CLEAR_PERSISTED_STATE) {
     storage.removeItem('persist:root');
-    // return rootReducer(undefined, action);
+    return rootReducer(undefined, action);
   }
   return rootReducer(state, action);
 };
