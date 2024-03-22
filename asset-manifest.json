@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/book-an-appointment-front-end-mv-final-capstone/static/css/main.d5836a9d.css",
-    "main.js": "/book-an-appointment-front-end-mv-final-capstone/static/js/main.9a6c1fb2.js",
+    "main.js": "/book-an-appointment-front-end-mv-final-capstone/static/js/main.686cbf16.js",
     "static/media/back3-pic.jpg": "/book-an-appointment-front-end-mv-final-capstone/static/media/back3-pic.edc59da15150d921dbd9.jpg",
     "static/media/back2-pic.jpg": "/book-an-appointment-front-end-mv-final-capstone/static/media/back2-pic.f8a00e849e011088bfdf.jpg",
     "static/media/back-pic.jpg": "/book-an-appointment-front-end-mv-final-capstone/static/media/back-pic.278cfa5de08f1c29d536.jpg",
@@ -9,10 +9,10 @@
     "static/media/menu-icon.svg": "/book-an-appointment-front-end-mv-final-capstone/static/media/menu-icon.86540bbf2d4a0febf72f.svg",
     "static/media/close-icon.svg": "/book-an-appointment-front-end-mv-final-capstone/static/media/close-icon.63ebee055cb823822268.svg",
     "main.d5836a9d.css.map": "/book-an-appointment-front-end-mv-final-capstone/static/css/main.d5836a9d.css.map",
-    "main.9a6c1fb2.js.map": "/book-an-appointment-front-end-mv-final-capstone/static/js/main.9a6c1fb2.js.map"
+    "main.686cbf16.js.map": "/book-an-appointment-front-end-mv-final-capstone/static/js/main.686cbf16.js.map"
   },
   "entrypoints": [
     "static/css/main.d5836a9d.css",
-    "static/js/main.9a6c1fb2.js"
+    "static/js/main.686cbf16.js"
   ]
 }
