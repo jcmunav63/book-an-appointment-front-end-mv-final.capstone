@@ -56,7 +56,7 @@ const UserReservations = ({ userId }) => {
     }
   }, [reservations]);
 
-  const handleDelete = (reservationId) => {
+  const handleDelete = (userId, reservationId) => {
     dispatch(deleteReservation(userId, reservationId));
   };
 

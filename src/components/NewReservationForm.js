@@ -4,8 +4,9 @@ import '../assets/css/newreservation.css';
 import styles from '../assets/stylesheets/NewReservationForm.module.css';
 
 const NewReservationForm = () => {
+  const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
   const [formData, setFormData] = useState({
-    user_id: '',
+    user_id: userId,
     space_cw_id: '',
     date_reserved: '',
     date_cancelled: '',
@@ -51,7 +52,6 @@ const NewReservationForm = () => {
       try {
         const response = await axios.get('https://book-an-appointment-back-end-mv-final.onrender.com/api/v1/all_cities');
         setCities(response.data);
-        console.log(cities);
       } catch (error) {
         setError('Error fetching cities:');
       }
