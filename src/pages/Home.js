@@ -121,7 +121,7 @@ const Home = () => {
             aria-disabled={visibleStartIndex >= coworkingSpaces.length - 3}
           >
             <img
-              src={visibleStartIndex >= coworkingSpaces.length - 3 ? '../../public/assets/arrows/rightDisabled.svg' : '../../public/assets/arrows/right.svg'}
+              src={visibleStartIndex >= coworkingSpaces.length - 3 ? '../assets/arrows/rightDisabled.svg' : '../assets/arrows/right.svg'}
               alt="Right"
             />
           </div>
