@@ -18,7 +18,7 @@ const DeleteSpaceCwForm = () => {
   useEffect(() => {
     const fetchSpaceCws = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/v1/users/${userId}/space_cws`);
+        const response = await axios.get(`https://book-an-appointment-back-end-mv-final.onrender.com/api/v1/users/${userId}/space_cws`);
         setSpaceCws(response.data);
       } catch (error) {
         setFetchError('Error fetching coworking spaces');
@@ -45,7 +45,7 @@ const DeleteSpaceCwForm = () => {
     }
 
     try {
-      const delUrl = `http://localhost:3001/api/v1/users/${userId}/space_cws/${selectedSpaceCwId}`;
+      const delUrl = `https://book-an-appointment-back-end-mv-final.onrender.com/api/v1/users/${userId}/space_cws/${selectedSpaceCwId}`;
       await axios.delete(delUrl);
       setSuccessMessage('Coworking space was deleted successfully!');
       dispatch({ type: CLEAR_PERSISTED_STATE });
