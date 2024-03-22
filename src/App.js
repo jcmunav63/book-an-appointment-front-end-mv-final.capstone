@@ -18,7 +18,7 @@ import UserReservations from './components/UserReservations';
 const PrivateRoute = ({ children }) => {
   const userString = localStorage.getItem('user');
   const user = userString ? JSON.parse(userString) : null;
-  return user ? children : <Navigate to="/" />;
+  return user ? children : <Navigate to="https://jcmunav63.github.io/book-an-appointment-front-end-mv-final-capstone/" />;
 };
 PrivateRoute.propTypes = {
   children: PropTypes.node.isRequired,
@@ -38,7 +38,7 @@ function App() {
               <Route path="/register" element={<Register />} />
 
               {/* Protected routes */}
-              <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
+              <Route path="/https://jcmunav63.github.io/book-an-appointment-front-end-mv-final-capstone/" element={<PrivateRoute><Home /></PrivateRoute>} />
               <Route path="/detailsPage/:spaceId" element={<PrivateRoute><DetailsPage /></PrivateRoute>} />
               <Route path="/newSpaceCw" element={<PrivateRoute><NewSpaceCwForm /></PrivateRoute>} />
               <Route path="/deleteSpaceCw" element={<PrivateRoute><DeleteSpaceCwForm /></PrivateRoute>} />

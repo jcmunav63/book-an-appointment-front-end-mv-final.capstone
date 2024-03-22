@@ -42,7 +42,7 @@ function Sidebar() {
       <div className={`${styles.sidebar} ${isActive ? styles.active : ''}`}>
         <h1>SMART COWORKING</h1>
         <ul>
-          <li><button type="button" onClick={() => navigateTo('/home')}>HOME</button></li>
+          <li><button type="button" onClick={() => navigateTo('/https://jcmunav63.github.io/book-an-appointment-front-end-mv-final-capstone/')}>HOME</button></li>
           <li><button type="button" onClick={() => navigateTo('/NewReservation')}>RESERVE</button></li>
           <li><button type="button" onClick={() => navigateTo('/MyReservations')}>RESERVATIONS</button></li>
           <li><button type="button" onClick={() => navigateTo('/newSpaceCw')}>ADD</button></li>
