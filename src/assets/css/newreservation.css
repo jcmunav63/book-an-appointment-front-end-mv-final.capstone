@@ -1,0 +1,66 @@
+h2 {
+  text-align: center;
+}
+
+#main-div {
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 70%;
+}
+
+.text-area {
+  width: 100%;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+.number {
+  width: 100%;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+.text {
+  width: 100%;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+.time {
+  width: 100%;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+.date {
+  width: 100%;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+.dropdown_list {
+  width: 100%;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+.new-reserve-btn {
+  margin: 12px 8px;
+  width: 90%;
+  height: 40px;
+  margin-left: 5%;
+  font-size: 1.6rem;
+  color: gray;
+  background-color: chartreuse;
+  border: 2px solid rgb(82, 82, 82);
+  box-shadow: 3px 3px black;
+  border-radius: 8px;
+}
+
+.new-reserve-btn:hover {
+  color: white;
+  background-color: rgb(51, 102, 0);
+  border: 2px solid rgb(82, 82, 82);
+  box-shadow: 3px 3px black;
+  box-shadow: 1px 1px black;
+}
