@@ -85,12 +85,10 @@ const Home = () => {
             aria-disabled={visibleStartIndex === 0}
           >
             <img
-              src={
-                visibleStartIndex === 0
-                  ? '../../assets/arrows/leftDisabled.svg'
-                  : '../../assets/arrows/left.svg'
-              }
-              alt="Left"
+              src={`${process.env.PUBLIC_URL}/assets/arrows/left${
+                visibleStartIndex === 0 ? 'Disabled' : ''
+              }.svg`}
+              alt="Left Arrow"
             />
           </div>
           <div className="spaces-slider">
@@ -99,10 +97,9 @@ const Home = () => {
                 <Link to={`/detailsPage/${space.id}`} key={space.id}>
                   <div className="space-item">
                     <img
-                      src={`${process.env.PUBLIC_URL}/assets/arrows/left${
-                        visibleStartIndex === 0 ? 'Disabled' : ''
-                      }.svg`}
-                      alt="Left Arrow"
+                      className="space-image"
+                      alt={space.name}
+                      src={space.image}
                     />
                     <div className="space-info">
                       <strong>{space.name}</strong>
