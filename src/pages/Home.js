@@ -99,9 +99,10 @@ const Home = () => {
                 <Link to={`/detailsPage/${space.id}`} key={space.id}>
                   <div className="space-item">
                     <img
-                      className="space-image"
-                      alt={space.name}
-                      src={space.image}
+                      src={`${process.env.PUBLIC_URL}/assets/arrows/left${
+                        visibleStartIndex === 0 ? 'Disabled' : ''
+                      }.svg`}
+                      alt="Left Arrow"
                     />
                     <div className="space-info">
                       <strong>{space.name}</strong>
