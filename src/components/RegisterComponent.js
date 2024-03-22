@@ -10,7 +10,7 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [role, setRole] = useState('');
+  const role = 'default';
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -84,17 +84,10 @@ const Register = () => {
               required
             />
           </div>
-          <div className="register-group">
-            <label htmlFor="role">Role:</label>
-            <input
-              type="text"
-              id="role"
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" className="register-button">Register</button>
+          <input type="hidden" id="role" value={role} />
+          <button type="submit" className="register-button">
+            Register
+          </button>
         </form>
       </div>
     </div>
