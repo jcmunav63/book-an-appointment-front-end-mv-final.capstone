@@ -1,44 +1,62 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import styles from '../assets/stylesheets/DeleteSpaceCwForm.module.css';
+import { CLEAR_PERSISTED_STATE } from '../actions/clearState';
 
 const DeleteSpaceCwForm = () => {
+  const dispatch = useDispatch();
   const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
 
-  const [formData, setFormData] = useState({
-    space_cw_id: '',
-    user_id: userId,
-  });
-
+  // Initialized with null to ensure no space is unintentionally selected
+  const [selectedSpaceCwId, setSelectedSpaceCwId] = useState(null);
+  const [spaceCws, setSpaceCws] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [fetchError, setFetchError] = useState('');
 
   useEffect(() => {
-    // Update formData whenever the userId changes
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      user_id: userId,
-    }));
+    const fetchSpaceCws = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3001/api/v1/users/${userId}/space_cws`);
+        setSpaceCws(response.data);
+      } catch (error) {
+        setFetchError('Error fetching coworking spaces');
+      }
+    };
+
+    if (userId) {
+      fetchSpaceCws();
+    }
   }, [userId]);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setSelectedSpaceCwId(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!selectedSpaceCwId) {
+      setErrorMessage('Please select a coworking space.');
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 5000); // Display the error for 5 seconds
+      return;
+    }
+
     try {
-      const delUrl = `http://localhost:3001/api/v1/users/${formData.user_id}/space_cws/${formData.space_cw_id}`;
+      const delUrl = `http://localhost:3001/api/v1/users/${userId}/space_cws/${selectedSpaceCwId}`;
       await axios.delete(delUrl);
       setSuccessMessage('Coworking space was deleted successfully!');
+      dispatch({ type: CLEAR_PERSISTED_STATE });
       setTimeout(() => {
         setSuccessMessage('');
-      }, 5000); // 5 seconds
+      }, 5000); // Hide the message after 5 seconds
     } catch (error) {
       setErrorMessage('Error deleting the coworking space. Please try again later.');
       setTimeout(() => {
         setErrorMessage('');
-      }, 8000); // 8 seconds
+      }, 8000); // Hide the message after 8 seconds
     }
   };
 
@@ -47,30 +65,39 @@ const DeleteSpaceCwForm = () => {
       <div className={styles.deleteCwsOverlay}>
         <h2 className={styles.deleteCwsTitle}>Delete a Coworking Space</h2>
         <form onSubmit={handleSubmit} className={styles.formContainer}>
-          <input
-            type="number"
-            name="space_cw_id"
-            className={styles.formField}
-            placeholder="Space_cw_id:"
-            value={formData.space_cw_id}
-            onChange={handleChange}
-            required
-          />
+          <label htmlFor="space_cw_id" className={styles.formLabel}>
+            Choose a Workspace:
+            <select
+              id="space_cw_id"
+              name="space_cw_id"
+              className={styles.formField}
+              value={selectedSpaceCwId || ''}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>Select a Workspace</option>
+              {spaceCws.map((spaceCw) => (
+                <option key={spaceCw.id} value={spaceCw.id}>
+                  {spaceCw.name}
+                </option>
+              ))}
+            </select>
+          </label>
 
-          {/* type="hidden"; value={loggedInUserId} */}
-          {/* <label htmlFor="user_id">User Id:</label> */}
           <input
             type="hidden"
             name="user_id"
-            value={formData.user_id}
+            value={userId}
             required
           />
 
-          {/* Success and error messages */}
-          {successMessage && <p className="success-message">{successMessage}</p>}
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
+          {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+          {fetchError && <p className={styles.errorMessage}>{fetchError}</p>}
 
-          <button type="submit" className={styles.deleteSpaceBtn}>Delete Coworking Space</button>
+          <button type="submit" className={styles.deleteSpaceBtn}>
+            Delete Coworking Space
+          </button>
         </form>
       </div>
     </div>

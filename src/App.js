@@ -39,11 +39,11 @@ function App() {
 
               {/* Protected routes */}
               <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
-              <Route path="/detailsPage/:spaceId" element={<DetailsPage />} />
-              <Route path="/newSpaceCw" element={<NewSpaceCwForm />} />
-              <Route path="/deleteSpaceCw" element={<DeleteSpaceCwForm />} />
-              <Route path="/NewReservation" element={<NewReservationForm />} />
-              <Route path="/MyReservations" element={<UserReservations userId={userId} />} />
+              <Route path="/detailsPage/:spaceId" element={<PrivateRoute><DetailsPage /></PrivateRoute>} />
+              <Route path="/newSpaceCw" element={<PrivateRoute><NewSpaceCwForm /></PrivateRoute>} />
+              <Route path="/deleteSpaceCw" element={<PrivateRoute><DeleteSpaceCwForm /></PrivateRoute>} />
+              <Route path="/NewReservation" element={<PrivateRoute><NewReservationForm /></PrivateRoute>} />
+              <Route path="/MyReservations" element={<PrivateRoute><UserReservations userId={userId} /></PrivateRoute>} />
               {/* Catch-all route for 404 Not Found */}
               <Route path="*" element={<div>404 Not Found</div>} />
             </Routes>
