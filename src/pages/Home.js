@@ -46,15 +46,13 @@ const Home = () => {
       <div className="content-center">
         {loading && <p>Loading...</p>}
         {error && (
-          <p>
-            Error:
-            {error}
-          </p>
+        <p>
+          Error:
+          {error}
+        </p>
         )}
         <h1>Latest coworking spaces</h1>
-        <p className="select-space-paragraph">
-          Please select a coworking space
-        </p>
+        <p className="select-space-paragraph">Please select a coworking space</p>
         <div className="decorative-dots">
           <div className="decorative-dot" />
           <div className="decorative-dot" />
@@ -75,9 +73,7 @@ const Home = () => {
         </div>
         <div className="slider-container">
           <div
-            className={`arrow left-arrow ${
-              visibleStartIndex === 0 ? 'disabled' : ''
-            }`}
+            className={`arrow left-arrow ${visibleStartIndex === 0 ? 'disabled' : ''}`}
             onClick={scrollLeft}
             onKeyDown={(event) => handleKeyPress(event, scrollLeft)}
             role="button"
@@ -85,50 +81,39 @@ const Home = () => {
             aria-disabled={visibleStartIndex === 0}
           >
             <img
-              src={
-                visibleStartIndex === 0
-                  ? '../../assets/arrows/leftDisabled.svg'
-                  : '../../assets/arrows/left.svg'
-              }
+              src={visibleStartIndex === 0 ? '../../assets/arrows/leftDisabled.svg' : '../../assets/arrows/left.svg'}
               alt="Left"
             />
           </div>
           <div className="spaces-slider">
-            {visibleSpaces
-              && visibleSpaces.map((space) => (
-                <Link to={`/detailsPage/${space.id}`} key={space.id}>
-                  <div className="space-item">
-                    <img
-                      className="space-image"
-                      alt={space.name}
-                      src={space.image}
-                    />
-                    <div className="space-info">
-                      <strong>{space.name}</strong>
-                      <div className="decorative-dots">
-                        <div className="decorative-dot" />
-                        <div className="decorative-dot" />
-                        <div className="decorative-dot" />
-                        <div className="decorative-dot" />
-                        <div className="decorative-dot" />
-                        <div className="decorative-dot" />
-                        <div className="decorative-dot" />
-                        <div className="decorative-dot" />
-                        <div className="decorative-dot" />
-                        <div className="decorative-dot" />
-                        <div className="decorative-dot" />
-                        <div className="decorative-dot" />
-                      </div>
-                      <p>{space.description}</p>
+            {visibleSpaces && visibleSpaces.map((space) => (
+              <Link to={`/detailsPage/${space.id}`} key={space.id}>
+                <div className="space-item">
+                  <img className="space-image" alt={space.name} src={space.image} />
+                  <div className="space-info">
+                    <strong>{space.name}</strong>
+                    <div className="decorative-dots">
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
+                      <div className="decorative-dot" />
                     </div>
+                    <p>{space.description}</p>
                   </div>
-                </Link>
-              ))}
+                </div>
+              </Link>
+            ))}
           </div>
           <div
-            className={`arrow right-arrow ${
-              visibleStartIndex >= coworkingSpaces.length - 3 ? 'disabled' : ''
-            }`}
+            className={`arrow right-arrow ${visibleStartIndex >= coworkingSpaces.length - 3 ? 'disabled' : ''}`}
             onClick={scrollRight}
             onKeyDown={(event) => handleKeyPress(event, scrollRight)}
             role="button"
@@ -136,11 +121,7 @@ const Home = () => {
             aria-disabled={visibleStartIndex >= coworkingSpaces.length - 3}
           >
             <img
-              src={`${process.env.PUBLIC_URL}/assets/arrows/right${
-                visibleStartIndex >= coworkingSpaces.length - 3
-                  ? 'Disabled'
-                  : ''
-              }.svg`}
+              src={visibleStartIndex >= coworkingSpaces.length - 3 ? '../../public/assets/arrows/rightDisabled.svg' : '../../public/assets/arrows/right.svg'}
               alt="Right"
             />
           </div>
