@@ -17,7 +17,7 @@ const Login = () => {
   // Handle effects
   useEffect(() => {
     if (isError) {
-      alert(message);
+      alert(`Error logging in: ${message}. Please try again.`);
     }
 
     if (isSuccess || user) {
