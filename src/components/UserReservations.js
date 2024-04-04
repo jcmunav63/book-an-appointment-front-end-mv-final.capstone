@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserReservations, deleteReservation } from '../actions/reservationActions';
 import '../assets/css/UserReservations.css';
+import API_BASE_URL from '../constants';
 
 const UserReservations = ({ userId }) => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const UserReservations = ({ userId }) => {
       try {
         const names = {};
         await Promise.all(reservations.map(async (reservation) => {
-          const response = await axios.get(`http://localhost:3001/api/v1/space_cws/${reservation.space_cw_id}`);
+          const response = await axios.get(`${API_BASE_URL}/space_cws/${reservation.space_cw_id}`);
           names[reservation.id] = response.data.name;
         }));
         setSpaceCwNames(names);
@@ -42,7 +43,7 @@ const UserReservations = ({ userId }) => {
       try {
         const names = {};
         await Promise.all(reservations.map(async (reservation) => {
-          const response = await axios.get(`http://localhost:3001/api/v1/cities/${reservation.city_id}`);
+          const response = await axios.get(`${API_BASE_URL}/cities/${reservation.city_id}`);
           names[reservation.id] = response.data.name;
         }));
         setCityNames(names);

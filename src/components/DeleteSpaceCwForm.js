@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import styles from '../assets/stylesheets/DeleteSpaceCwForm.module.css';
 import { CLEAR_PERSISTED_STATE } from '../actions/clearState';
+import API_BASE_URL from '../constants';
 
 const DeleteSpaceCwForm = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const DeleteSpaceCwForm = () => {
   useEffect(() => {
     const fetchSpaceCws = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/v1/users/${userId}/space_cws`);
+        const response = await axios.get(`${API_BASE_URL}/users/${userId}/space_cws`);
         setSpaceCws(response.data);
       } catch (error) {
         setFetchError('Error fetching coworking spaces');
@@ -45,7 +46,7 @@ const DeleteSpaceCwForm = () => {
     }
 
     try {
-      const delUrl = `http://localhost:3001/api/v1/users/${userId}/space_cws/${selectedSpaceCwId}`;
+      const delUrl = `${API_BASE_URL}/users/${userId}/space_cws/${selectedSpaceCwId}`;
       await axios.delete(delUrl);
       setSuccessMessage('Coworking space was deleted successfully!');
       dispatch({ type: CLEAR_PERSISTED_STATE });
