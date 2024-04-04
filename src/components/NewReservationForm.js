@@ -75,6 +75,18 @@ const NewReservationForm = () => {
     try {
       await axios.post(`${API_BASE_URL}api/v1/users/:user_id/reservations`, formData);
       setSuccessMessage('Reservation created successfully!');
+      setFormData({
+        user_id: userId,
+        space_cw_id: '',
+        date_reserved: '',
+        date_cancelled: '',
+        start_date: '',
+        end_date: '',
+        start_time: '',
+        end_time: '',
+        city_id: '',
+        comments: '',
+      });
       setTimeout(() => {
         setSuccessMessage('');
       }, 5000); // 5 seconds
