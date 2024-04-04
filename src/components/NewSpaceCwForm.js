@@ -39,6 +39,17 @@ const NewSpaceCwForm = () => {
     try {
       await axios.post(`${API_BASE_URL}api/v1/users/:user_id/space_cws`, formData);
       setSuccessMessage('New coworking space created successfully!');
+      setFormData({
+        name: '',
+        model: '',
+        description: '',
+        address: '',
+        price: '',
+        image: '',
+        discount: '',
+        category: '',
+        user_id: formData.user_id,
+      });
       setTimeout(() => {
         setSuccessMessage('');
       }, 5000); // 5 seconds
