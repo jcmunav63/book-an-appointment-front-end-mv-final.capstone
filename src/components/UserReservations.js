@@ -24,7 +24,7 @@ const UserReservations = ({ userId }) => {
       try {
         const names = {};
         await Promise.all(reservations.map(async (reservation) => {
-          const response = await axios.get(`${API_BASE_URL}/space_cws/${reservation.space_cw_id}`);
+          const response = await axios.get(`${API_BASE_URL}api/v1/space_cws/${reservation.space_cw_id}`);
           names[reservation.id] = response.data.name;
         }));
         setSpaceCwNames(names);
@@ -43,7 +43,7 @@ const UserReservations = ({ userId }) => {
       try {
         const names = {};
         await Promise.all(reservations.map(async (reservation) => {
-          const response = await axios.get(`${API_BASE_URL}/cities/${reservation.city_id}`);
+          const response = await axios.get(`${API_BASE_URL}api/v1/cities/${reservation.city_id}`);
           names[reservation.id] = response.data.name;
         }));
         setCityNames(names);

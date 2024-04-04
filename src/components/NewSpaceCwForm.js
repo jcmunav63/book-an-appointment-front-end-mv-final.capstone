@@ -37,7 +37,7 @@ const NewSpaceCwForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API_BASE_URL}/users/:user_id/space_cws`, formData);
+      await axios.post(`${API_BASE_URL}api/v1/users/:user_id/space_cws`, formData);
       setSuccessMessage('New coworking space created successfully!');
       setTimeout(() => {
         setSuccessMessage('');

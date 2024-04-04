@@ -30,7 +30,7 @@ export const createReservationFailure = (error) => ({
 export const createReservation = (reservationData) => async (dispatch) => {
   dispatch(createReservationRequest());
   try {
-    const response = await axios.post(`${API_BASE_URL}/users/:user_id/reservations`, { reservation: reservationData });
+    const response = await axios.post(`${API_BASE_URL}api/v1/users/:user_id/reservations`, { reservation: reservationData });
     dispatch(createReservationSuccess(response.data));
   } catch (error) {
     dispatch(createReservationFailure(error.message));
@@ -39,7 +39,7 @@ export const createReservation = (reservationData) => async (dispatch) => {
 
 export const fetchUserReservations = (userId) => async (dispatch) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/users/${userId}/reservations`);
+    const response = await axios.get(`${API_BASE_URL}api/v1/users/${userId}/reservations`);
     dispatch({ type: 'FETCH_USER_RESERVATIONS_SUCCESS', payload: response.data });
   } catch (error) {
     dispatch({ type: 'FETCH_USER_RESERVATIONS_FAILURE', payload: error.message });
@@ -48,7 +48,7 @@ export const fetchUserReservations = (userId) => async (dispatch) => {
 
 export const deleteReservation = (userId, reservationId) => async (dispatch) => {
   try {
-    await axios.delete(`${API_BASE_URL}/users/${userId}/reservations/${reservationId}`);
+    await axios.delete(`${API_BASE_URL}api/v1/users/${userId}/reservations/${reservationId}`);
     dispatch({ type: 'DELETE_RESERVATION_SUCCESS', payload: reservationId });
   } catch (error) {
     dispatch({ type: 'DELETE_RESERVATION_FAILURE', payload: error.message });
