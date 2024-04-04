@@ -21,12 +21,11 @@ const Register = () => {
 
   useEffect(() => {
     if (isError) {
-      alert(message);
+      alert(`Error registering: ${message}. Please try again.`);
     }
 
     if (isSuccess || user) {
       navigate('/home');
-      console.log('Register successful');
     }
 
     dispatch(reset());
