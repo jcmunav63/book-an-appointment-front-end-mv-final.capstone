@@ -19,8 +19,11 @@ function Sidebar() {
   };
 
   const handleLogout = () => {
-    dispatch(logout());
-    navigate('/');
+    const isConfirmed = window.confirm('Are you sure you want to log out?');
+    if (isConfirmed) {
+      dispatch(logout());
+      navigate('/');
+    }
   };
 
   React.useEffect(() => {
