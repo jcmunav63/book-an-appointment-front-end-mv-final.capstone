@@ -1,42 +1,41 @@
-## Book An Appointment App - Front End - Final Capstone
+## Smart Coworking - Front End
 
 <a name="readme-top"></a>
 <div align="center">
-    <img src="/logo_jcm_md.png" alt="main-logo" width="500"  height="auto" />
+    <img src="/logo-julio.png" alt="main-logo" width="500"  height="auto" />
   <br/>
-  <h3><b>Book An Appointment App - Front End - Final Capstone</b></h3>
+  <h3><b>Smart Coworking - Front End</b></h3>
 </div>
 📗 Table of Contents <a name="table_of-contents"></a>
 
-- [📗 Table of Contents](#table-of-contents)
-- [📖 About project ](#about-project)
-  - [📖 Kanban Board ](#kanban-board)
-  - [🛠 Built With ](#-built-with-)
-    - [Tech Stack ](#tech-stack-)
-    - [Key Features ](#key-features-)
-  - [🚀 Presentation ](#-presentation-)
-  - [💻 Getting Started ](#-getting-started-)
-    - [Prerequisites](#prerequisites)
-    - [Setup](#setup)
-    - [Install](#install)
-    - [Usage](#usage)
-    - [Run tests](#run-tests)
-    - [Deployment](#deployment)
-  - [👥 Authors ](#-authors-)
-  - [🔭 Future Features ](#-future-features-)
-  - [🤝 Contributing ](#-contributing-)
-  - [⭐️ Show your support ](#️-show-your-support-)
-  - [🙏 Acknowledgments ](#-acknowledgments-)
-  - [❓ FAQ ](#-faq-)
-  - [📝 License ](#-license-)
+- [Smart Coworking - Front End](#smart-coworking---front-end)
+- [📖 About project - Smart Coworking - Front End (React \& Redux) ](#-about-project---smart-coworking---front-end-react--redux-)
+- [📖 KANBAN BOARD - Book An Appointment Web App - Ruby on Rails Back-End ](#-kanban-board---book-an-appointment-web-app---ruby-on-rails-back-end-)
+- [🛠 Built With ](#-built-with-)
+  - [Tech Stack ](#tech-stack-)
+  - [Key Features ](#key-features-)
+- [🚀 Presentation ](#-presentation-)
+- [💻 Getting Started ](#-getting-started-)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
+- [👥 Authors ](#-authors-)
+- [🔭 Future Features ](#-future-features-)
+- [🤝 Contributing ](#-contributing-)
+- [⭐️ Show your support ](#️-show-your-support-)
+- [🙏 Acknowledgments ](#-acknowledgments-)
+- [❓ FAQ ](#-faq-)
+- [📝 License ](#-license-)
 
-## 📖 About project - Book An Appointment App - Front End (React & Redux) - Final Capstone <a name="about-project"></a>
+## 📖 About project - Smart Coworking - Front End (React & Redux) <a name="about-project"></a>
 
-The Book An Appointment App - Front End - Final Capstone project is a project using React.js and Redux, that connects to a back-end API project which provides the data.
+Smart Coworking- Front End - This project was created using React.js and Redux, that connects to a back-end API project which provides the data.
 
-Front-end application name: book-an-appointment-front-end-mv-final-capstone link: https://github.com/jcmunav63/book-an-appointment-front-end-mv-final-capstone.git
+Front-end link: https://github.com/Alejandroq12/smart-coworking-frontend
 
-Back-end application name: book-an-appointment-back-end-mv-final-capstone link: https://github.com/jcmunav63/book-an-appointment-back-end-mv-final-capstone.git
+Back-end link: https://github.com/Alejandroq12/smart-coworking-backend
 
 
 ## 📖 KANBAN BOARD - Book An Appointment Web App - Ruby on Rails Back-End <a name="kanban-board"></a>
@@ -96,7 +95,7 @@ Prerquisites: Node.js, npm...
 
 ```sh
   cd my-folder
-  git clone https://github.com/jcmunav63/book-an-appointment-front-end-mv-final-capstone.git
+  git clone https://github.com/Alejandroq12/smart-coworking-frontend.git
 ```
 
 ### Install
@@ -104,9 +103,7 @@ Prerquisites: Node.js, npm...
 This project requires the following dependencies: Additionally, the project requires the following linters checkers: Stylelint (CSS styles), ESLint (JavaScript).
 
 ```sh
-npx create-react-app my-app
-
-npm install @reduxjs/toolkit
+npm install
 ```
 
 ### Usage
@@ -119,23 +116,6 @@ Start the Webpack web server typing the following command...
 ```
 
 ### Run tests
-
-* Install the Stylelint linters.
-
-Install Stylelint linters checker using the following command...
-```sh
-npm install --save-dev stylelint@13.x stylelint-scss@3.x stylelint-config-standard@21.x stylelint-csstree-validator@1.x
-```
-- Remember to copy the .stylelintrc.json file to the root directory.
-
-Install ESlint linters checker using the following command...
-```sh
-npm install --save-dev eslint@7.x eslint-config-airbnb@18.x eslint-plugin-import@2.x eslint-plugin-jsx-a11y@6.x eslint-plugin-react@7.x eslint-plugin-react-hooks@4.x @babel/eslint-parser@7.x @babel/core@7.x  @babel/plugin-syntax-jsx@7.x  @babel/preset-react@7.x @babel/preset-react@7.x
-```
-- Remember to copy the .eslintrc.json and the .babelrc files to the root directory.
-
-- Copy the linters.yml file inside of path .github/workflows
-
 
 To run LINTERS, run the following command:
 
@@ -176,7 +156,10 @@ npx eslint "**/*.{js,jsx}"
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **No future features.**
+- **Redux implementation will be improved**
+- **Error handling will be improved**
+- **Security will be improved**
+- **DRY will be implemented**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
