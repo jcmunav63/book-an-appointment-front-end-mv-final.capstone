@@ -55,6 +55,12 @@ function Sidebar() {
             <li><button type="button" onClick={handleLogout}>LOGOUT</button></li>
           </ul>
         )}
+        {!userId && (
+        <ul>
+          <li><button type="button" onClick={() => navigateTo('/login')}>LOGIN</button></li>
+          <li><button type="button" onClick={() => navigateTo('/register')}>REGISTER</button></li>
+        </ul>
+        )}
       </div>
       <button type="button" className={`${styles.icon} ${isActive ? styles.closeIcon : ''}`} onClick={clickHandle} aria-label="Toggle Sidebar" />
     </>
