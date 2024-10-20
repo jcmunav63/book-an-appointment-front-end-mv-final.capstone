@@ -6,8 +6,8 @@ import { login, reset } from '../features/auth/authSlice';
 import '../assets/css/login.css';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('hirejulio@gmail.com');
+  const [password, setPassword] = useState('password');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {
@@ -33,10 +33,28 @@ const Login = () => {
     dispatch(login({ email, password }));
   };
 
+  // Handle clearing credentials
+  const handleClearCredentials = () => {
+    setEmail('');
+    setPassword('');
+  };
+
   return (
     <div className="login-page">
       <div className="login-container">
         <h2>Login</h2>
+        <p>
+          Email and password are pre-filled for quick access to the project.
+          You can also
+          <button
+            type="button"
+            onClick={handleClearCredentials}
+            className="clear-credentials-btn"
+          >
+            clear
+          </button>
+          the credentials to test with your own email and password.
+        </p>
         <form onSubmit={handleLogin} className="login-form">
           <div className="form-group">
             <label htmlFor="email">Email:</label>
