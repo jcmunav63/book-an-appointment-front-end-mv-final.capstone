@@ -1,12 +1,12 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import homeReducer from './HomeReducer';
+import coworkingSpacesReducer from '../features/coworkingSpaces/coworkingSpacesSlice';
 import authReducer from '../features/auth/authSlice';
-import reservationReducer from './reservationReducer';
+import reservationsReducer from '../features/reservations/reservationsSlice';
 
 const rootReducer = combineReducers({
-  coworkingSpaces: homeReducer,
+  coworkingSpaces: coworkingSpacesReducer,
   auth: authReducer,
-  reservation: reservationReducer,
+  reservations: reservationsReducer,
 });
 
 export default rootReducer;

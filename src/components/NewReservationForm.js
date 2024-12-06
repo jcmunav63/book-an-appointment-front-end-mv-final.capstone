@@ -21,7 +21,6 @@ const NewReservationForm = () => {
 
   const [spaceCws, setSpaceCws] = useState([]);
   const [cities, setCities] = useState([]);
-
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(null);
@@ -31,14 +30,10 @@ const NewReservationForm = () => {
     setFormData((prevFormData) => ({ ...prevFormData, user_id: userId }));
   }, []);
 
+  // Fetch coworking spaces
   const fetchSpaceCws = async () => {
-    const jwt = JSON.parse(localStorage.getItem('user'))?.jwt;
     try {
-      const response = await axios.get(`${API_BASE_URL}api/v1/coworking_spaces`, {
-        headers: {
-          Authorization: `Bearer ${jwt}`,
-        },
-      });
+      const response = await axios.get(`${API_BASE_URL}api/v1/coworking_spaces`);
       setSpaceCws(response.data);
       const cityIds = response.data.map((spaceCw) => spaceCw.city_id);
       setFormData((prevFormData) => ({
@@ -46,7 +41,17 @@ const NewReservationForm = () => {
         city_id: cityIds[0] || '',
       }));
     } catch (error) {
-      setError('Error fetching Space_cws:');
+      setError('Error fetching coworking spaces.');
+    }
+  };
+
+  // Fetch cities
+  const fetchCities = async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}api/v1/all_cities`);
+      setCities(response.data);
+    } catch (error) {
+      setError('Error fetching cities.');
     }
   };
 
@@ -55,19 +60,6 @@ const NewReservationForm = () => {
   }, [formData.user_id]);
 
   useEffect(() => {
-    const fetchCities = async () => {
-      const jwt = JSON.parse(localStorage.getItem('user'))?.jwt;
-      try {
-        const response = await axios.get(`${API_BASE_URL}api/v1/all_cities`, {
-          headers: {
-            Authorization: `Bearer ${jwt}`,
-          },
-        });
-        setCities(response.data);
-      } catch (error) {
-        setError('Error fetching cities:');
-      }
-    };
     fetchCities();
   }, []);
 
@@ -83,13 +75,9 @@ const NewReservationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const jwt = JSON.parse(localStorage.getItem('user'))?.jwt;
     try {
-      await axios.post(`${API_BASE_URL}api/v1/users/${formData.user_id}/reservations`, formData, {
-        headers: {
-          Authorization: `Bearer ${jwt}`,
-        },
-      });
+      const payload = { reservation: formData };
+      await axios.post(`${API_BASE_URL}api/v1/users/${formData.user_id}/reservations`, payload);
       setSuccessMessage('Reservation created successfully!');
       setFormData({
         user_id: userId,

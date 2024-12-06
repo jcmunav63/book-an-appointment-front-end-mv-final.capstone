@@ -19,12 +19,8 @@ const NewSpaceCwForm = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
+  // Automatically populate the user ID from localStorage on component mount
   useEffect(() => {
-    // Get user ID from local storage
     const userId = JSON.parse(localStorage.getItem('user'))?.user.id;
     if (userId) {
       setFormData((prevFormData) => ({
@@ -34,15 +30,19 @@ const NewSpaceCwForm = () => {
     }
   }, []);
 
+  // Handle input changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const jwt = JSON.parse(localStorage.getItem('user'))?.jwt;
+
     try {
-      await axios.post(`${API_BASE_URL}api/v1/users/:user_id/space_cws`, formData, {
-        headers: {
-          Authorization: `Bearer ${jwt}`,
-        },
-      });
+      await axios.post(`${API_BASE_URL}api/v1/users/${formData.user_id}/space_cws`, { space_cw: formData });
+
+      // Success feedback and reset form
       setSuccessMessage('New coworking space created successfully!');
       setFormData({
         name: '',
@@ -53,16 +53,21 @@ const NewSpaceCwForm = () => {
         image: '',
         discount: '',
         category: '',
-        user_id: formData.user_id,
+        user_id: formData.user_id, // Keep user_id intact
       });
+
+      // Clear success message after 5 seconds
       setTimeout(() => {
         setSuccessMessage('');
-      }, 5000); // 5 seconds
+      }, 5000);
     } catch (error) {
+      // Error feedback
       setErrorMessage('Error creating coworking space. Please try again later.');
+
+      // Clear error message after 8 seconds
       setTimeout(() => {
         setErrorMessage('');
-      }, 8000); // 8 seconds
+      }, 8000);
     }
   };
 
@@ -163,7 +168,9 @@ const NewSpaceCwForm = () => {
           {/* Success and error messages */}
           {successMessage && <p className="success-message">{successMessage}</p>}
           {errorMessage && <p className="error-message">{errorMessage}</p>}
-          <button type="submit" className={styles.newSpaceBtn}>Create Coworking Space</button>
+          <button type="submit" className={styles.newSpaceBtn}>
+            Create Coworking Space
+          </button>
         </form>
       </div>
     </div>

@@ -6,8 +6,8 @@ import { login, reset } from '../features/auth/authSlice';
 import '../assets/css/login.css';
 
 const Login = () => {
-  const [email, setEmail] = useState('hirejulio@gmail.com');
-  const [password, setPassword] = useState('password');
+  const [email, setEmail] = useState('johnsmith@gmail.com');
+  const [password, setPassword] = useState('me1234');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {
@@ -24,7 +24,7 @@ const Login = () => {
       navigate('/home');
     }
 
-    dispatch(reset()); // Reset the auth state on component unmount
+    dispatch(reset());
   }, [user, isError, isSuccess, message, dispatch, navigate]);
 
   // Handle form submission
